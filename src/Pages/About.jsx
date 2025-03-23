@@ -18,17 +18,9 @@ const About = () => {
 
       {/* Centered Heading */}
       <div className="relative z-20 w-full text-center mt-10">
-        <h1
-          className="text-3xl md:text-4xl font-bold text-green-900"
-          style={{
-            position: "relative",
-            display: "inline-block",
-            padding: "10px 20px",
-            borderRadius: "5px",
-            overflow: "hidden",
-          }}
-        >
-          Recon Mission
+        
+        <h1 className="relative inline-block text-3xl md:text-4xl font-bold text-green-900 px-5 py-2 rounded-md overflow-hidden">
+          Recon Mission 
           {/*Animated Border */}
           <span
             style={{
@@ -70,42 +62,16 @@ const About = () => {
   `}
       </style>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "85%",
-          marginTop: "50px",
-        }}
-      >
-        {/*   Image on Left Side */}
+      <div className="flex items-center justify-between w-11/12 md:w-4/5 mt-12">
+        {/* Image on Left Side */}
         <img
           src={soldier}
           alt="Hackathon Soldier"
-          style={{
-            width: "100%",
-            maxWidth: "350px",
-            objectFit: "contain",
-            filter: "drop-shadow(4px 4px 10px rgba(0,0,0,0.3))",
-          }}
+          className="w-full max-w-[350px] object-contain drop-shadow-md"
         />
 
         {/*  Paragraph on Right Side */}
-        <div
-          className="hackathon-info"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            padding: "20px",
-            borderRadius: "10px",
-            fontFamily: "Arial, sans-serif",
-            width: "50%",
-            textAlign: "center",
-            minHeight: "150px",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
+        <div className="relative bg-black bg-opacity-50 p-5 rounded-lg w-1/2 min-h-[150px] text-center overflow-hidden">
           {/* Animated Border */}
           <div
             style={{
@@ -120,16 +86,7 @@ const About = () => {
             }}
           />
 
-          <p
-            style={{
-              color: "white",
-              fontSize: "16px",
-              lineHeight: "1.8",
-              margin: "0",
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
+          <p className="text-white text-base leading-relaxed relative z-10">
             A hackathon is an event where programmers, designers, and developers
             come together to collaborate on software projects within a limited
             timeframe. Participants work in teams to build innovative solutions,
