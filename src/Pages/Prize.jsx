@@ -13,28 +13,28 @@ const PrizePage = () => {
       rank: "1st Place",
       description: "For the most innovative and impactful solution.",
       rewards: ["$5,000 Cash Prize", "Professional Mentorship", "Recruitment Opportunities"],
-      icon: "🎖️",
+      // icon: "🎖️",
     },
     {
       title: "Lieutenant's Award",
       rank: "2nd Place",
       description: "For exceptional technical execution and problem-solving.",
       rewards: ["$2,500 Cash Prize", "Cloud Credits", "Industry Recognition"],
-      icon: "⭐",
+      // icon: "⭐",
     },
     {
       title: "Sergeant's Recognition",
       rank: "3rd Place",
       description: "For outstanding teamwork and presentation skills.",
       rewards: ["$1,000 Cash Prize", "Hardware Kits", "Community Spotlight"],
-      icon: "🏅",
+      // icon: "🏅",
     },
     {
       title: "Special Operations",
       rank: "Special Category",
       description: "For the most creative use of emerging technologies.",
       rewards: ["$750 Cash Prize", "Tech Gadgets", "Conference Tickets"],
-      icon: "🔍",
+      // icon: "🔍",
     },
   ];
 
@@ -88,60 +88,54 @@ const PrizePage = () => {
         <BgDots />
       </div>
       {/* Animated background element */}
-      <div className="">
+       
 
-        <motion.div 
-          className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl"
-          animate={{
-            x: [100, -30, 100],
-            y: [100, 200, 100],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 rounded-full filter blur-3xl"
-          animate={{
-            x: [-100, 30, -100],
-            y: [30, -30, 30],
-            opacity: [0.1, 0.15, 0.1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </div>
+      
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-cover bg-center" 
-           style={{backgroundImage: "url('/api/placeholder/1200/400')"}}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-        <RadarScan />
-        <div className="container mx-auto px-4 flex flex-col items-center justify-center relative z-10 mb-9">
-          <motion.h1 
-            initial={{ y: -70, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="text-5xl md:text-6xl font-bold text-center text-green-400 tracking-wide uppercase"
-          >
-            <motion.span
-              animate={{ textShadow: ["0 0 5px rgba(52, 211, 153, 0)", "0 0 20px rgba(52, 211, 153, 0.7)", "0 0 5px rgba(52, 211, 153, 0)"] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              MISSION REWARDS
-            </motion.span>
-          </motion.h1>
-         
-         
-        </div>
+      <div className="relative z-20 w-full text-center mt-10">
+        
+        <h1 className="relative inline-block text-3xl md:text-4xl font-bold text-green-500 px-5 py-2 rounded-md overflow-hidden">
+           War Chest
+          {/*Animated Border */}
+          <span
+            style={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "2px solid white",
+              borderRadius: "5px",
+              boxSizing: "border-box",
+              animation: "border-rotate 5s linear infinite",
+            }}
+          />
+        </h1>
       </div>
+      {/* ✅ CSS for Rotating Border */}
+      <style>
+        {`
+    @keyframes border-rotate {
+      0% {
+        clip-path: inset(0 0 98% 0);
+      }
+      25% {
+        clip-path: inset(0 98% 0 0);
+      }
+      50% {
+        clip-path: inset(98% 0 0 0);
+      }
+      75% {
+        clip-path: inset(0 0 0 98%);
+      }
+      100% {
+        clip-path: inset(0 0 98% 0);
+      }
+    }
+  `}
+      </style>
 
       {/* Tabs Navigation */}
       <div className="container mx-auto px-4 py-6">
@@ -211,8 +205,8 @@ const PrizePage = () => {
                   onHoverStart={() => setHoveredPrize(index)}
                   onHoverEnd={() => setHoveredPrize(null)}
                 >
-                  <div className="bg-gray-700 p-4 flex justify-between items-center">
-                    <h3 className="text-xl font-bold text-green-400">{prize.title}</h3>
+                  <div className="bg-gray-900 p-4 flex justify-between items-center">
+                    <h3 className="text-xl font-bold text-green-600">{prize.title}</h3>
                     <motion.span 
                       className="text-3xl"
                       animate={hoveredPrize === index ? { 
@@ -226,12 +220,12 @@ const PrizePage = () => {
                   </div>
                   <div className="p-6">
                     <motion.div 
-                      className="inline-block px-3 py-1 bg-green-900 text-green-300 rounded-full text-sm font-semibold mb-4"
+                      className="inline-block px-3 py-1 bg-gray-900 text-green-600 rounded-full text-sm font-semibold mb-4"
                       whileHover={{ scale: 1.05 }}
                     >
                       {prize.rank}
                     </motion.div>
-                    <p className="text-gray-300 mb-4">{prize.description}</p>
+                    <p className="text-gray-200 mb-4">{prize.description}</p>
                     <ul className="space-y-2">
                       {prize.rewards.map((reward, idx) => (
                         <motion.li 
@@ -242,7 +236,7 @@ const PrizePage = () => {
                           transition={{ delay: index * 0.1 + idx * 0.1 }}
                         >
                           <motion.svg 
-                            className="w-4 h-4 mr-2 text-green-500" 
+                            className="w-4 h-4 mr-2 " 
                             fill="currentColor" 
                             viewBox="0 0 20 20"
                             animate={hoveredPrize === index ? { scale: [1, 1.3, 1] } : {}}
@@ -255,15 +249,7 @@ const PrizePage = () => {
                       ))}
                     </ul>
                   </div>
-                  {hoveredPrize === index && (
-                    <motion.div 
-                      className="absolute inset-0 border-2 border-green-400 rounded-lg pointer-events-none"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  )}
+                  
                 </motion.div>
               ))}
             </div>
@@ -281,7 +267,7 @@ const PrizePage = () => {
           >
             <div className="flex flex-col items-center mb-12">
               <h2 className="text-3xl font-bold mb-2 text-green-400 uppercase tracking-wider">Special Reconnaissance</h2>
-              <p className="text-lg text-gray-400 max-w-2xl text-center">
+              <p className="text-lg text-gray-300 max-w-2xl text-center">
                 Additional commendations for specialized skills and tactical excellence.
               </p>
             </div>
@@ -310,21 +296,21 @@ const PrizePage = () => {
                   />
 
                   <motion.h3 
-                    className="text-xl font-bold text-green-400 mb-3 relative z-10"
+                    className="text-xl font-bold text-green-600 mb-3 relative z-10"
                     whileHover={{ scale: 1.02, x: 2 }}
                   >
                     {mention.title}
                   </motion.h3>
-                  <p className="text-gray-300 mb-4 relative z-10">{mention.description}</p>
+                  <p className="text-gray-200 mb-4 relative z-10">{mention.description}</p>
                   <motion.div 
-                    className="pt-4 border-t border-gray-600 relative z-10"
+                    className="pt-4 border-t border-gray-900 relative z-10"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                     style={{ originX: 0 }}
                   >
                     <motion.p 
-                      className="text-green-300 font-medium"
+                      className="text-green-500 font-medium"
                       whileHover={{ textShadow: "0 0 8px rgba(52, 211, 153, 0.5)" }}
                     >
                       REWARD: {mention.reward}
@@ -337,29 +323,7 @@ const PrizePage = () => {
         )}
       </AnimatePresence>
 
-      {/* Floating Decoration Elements */}
-      <motion.div 
-        className="fixed top-1/4 right-10 w-2 h-2 bg-green-400 rounded-full"
-        animate={{
-          y: [0, 20, 0],
-          opacity: [1, 0.5, 1]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity
-        }}
-      />
-      <motion.div 
-        className="fixed bottom-1/4 left-10 w-3 h-3 bg-green-500 rounded-full"
-        animate={{
-          y: [0, -30, 0],
-          opacity: [1, 0.3, 1]
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity
-        }}
-      />
+       
     </div>
   );
 };
