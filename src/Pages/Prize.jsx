@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BgDots from '../Components/particles/BgDots';
+import bg from "../assets/bg-2.jpg";
 
 const PrizePage = () => {
   const [hoveredPrize, setHoveredPrize] = useState(null);
@@ -76,9 +78,18 @@ const PrizePage = () => {
   );
 
   return (
-    <div className="bg-gray-900 text-gray-200 w-full h-screen relative overflow-y-auto">
+    <div
+  className="  w-full h-screen relative overflow-y-auto"
+  style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+>
+ 
+
+    <div className="absolute inset-0  ">
+        <BgDots />
+      </div>
       {/* Animated background element */}
       <div className="">
+
         <motion.div 
           className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl"
           animate={{
