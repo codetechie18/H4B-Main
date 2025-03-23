@@ -7,3 +7,16 @@
     width: 100vw;
     overflow: hidden;
   }
+
+  .title-shadow {
+    font-size: 10rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.2); /* Semi-transparent shadow */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  

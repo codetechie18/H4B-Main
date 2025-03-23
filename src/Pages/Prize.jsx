@@ -76,9 +76,9 @@ const PrizePage = () => {
   );
 
   return (
-    <div className="bg-gray-900 text-gray-200 min-h-screen relative overflow-hidden">
+    <div className="bg-gray-900 text-gray-200 w-full h-screen relative overflow-y-auto">
       {/* Animated background element */}
-      <div className="fixed inset-0 z-0">
+      <div className="">
         <motion.div 
           className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl"
           animate={{
