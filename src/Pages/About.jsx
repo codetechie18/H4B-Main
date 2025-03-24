@@ -20,7 +20,7 @@ const StatCard = ({ icon: Icon, value, label, delay, isVisible }) => (
       <div className="relative">
         <div className="absolute inset-0 bg-orange-100 rounded-full blur-md opacity-20 animate-pulse" />
         <div className="relative bg-gradient-to-br from-green-800 to-green-800 p-3 rounded-full">
-          <Icon className="w-8 h-8 text-yellow-300" />
+          <Icon className="w-8 h-8 text-green-900300" />
         </div>
       </div>
       <p className="text-3xl font-bold text-white">
@@ -29,7 +29,7 @@ const StatCard = ({ icon: Icon, value, label, delay, isVisible }) => (
         {label.includes("") ? "+" : ""}
       </p>
       <p
-        className="text-orange-800 font-medium text-center text-xl"
+        className="text-green-800 font-medium text-center text-xl"
         style={{ fontFamily: "Pirata One, cursive" }}
       >
         {label}
@@ -89,9 +89,9 @@ const About = () => {
     const interval = animationDuration / steps;
 
     const targetStats = {
-      prizes: 500000,
+      prizes: 50000,
       registration: 4000,
-      hackers: 250,
+      hackers: 350,
       projects: 100,
     };
 
