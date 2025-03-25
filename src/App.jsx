@@ -1,28 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./components/About";
+import Hero from "./components/Hero";
 import Navbar from "./Components/Navbar";
-
-import Home from "./Pages/Home"; // Ensure you have this file
-import About from "./Pages/About"; // Ensure you have this file
-import Prize from "./Pages/Prize"; // Ensure you have this file
-
-
+// import Features from "./components/Features";
+// import Story from "./components/Story";
+// import Contact from "./components/Contact";
+// import Footer from "./components/Footer";
 
 function App() {
-    return (
-        <Router>
-            <Navbar />
-            <div className="min-h-screen flex flex-col items-center justify-center">
-                <Routes>
-                    <Route path="/home" element={<Home />} />
-
-                  <Route path="/prize" element={<Prize />} />
-                   
-                    <Route path="/about" element={<About />} />  {/* ✅ Corrected Route */}
-
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <main className="relative min-h-screen w-screen overflow-x-hidden">
+     <Navbar />
+      <Hero />
+      <About />
+    </main>
+  );
 }
 
 export default App;
