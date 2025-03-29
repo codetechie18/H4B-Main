@@ -1,292 +1,154 @@
-import React, { useState, useEffect, useRef } from "react";
-import BgDots from "../Components/particles/BgDots";
-import soldier from "../assets/soldier.png";
-import { TrendingUp, Users, Briefcase, Trophy } from "lucide-react";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Star, Target, Award } from "lucide-react";
+import AnimatedTitle from "../Components/AnimatedTitle";
 
+gsap.registerPlugin(ScrollTrigger);
 
-const StatCard = ({ icon: Icon, value, label, delay, isVisible }) => (
-  <div
-    className={`relative overflow-hidden p-4 sm:p-6 transform 
-      hover:scale-105 transition-all duration-500 ease-out 
-      hover:shadow-[0_15px_30px_rgba(0,0,0,0.25)] border-x-green-800
-      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-    style={{
-      transition: `transform 0.5s ease-out, opacity 0.5s ease-out, translate 0.5s ease-out, box-shadow 0.3s ease-out`,
-      transitionDelay: `${delay}ms`,
-    }}
-  >
-    <div className="absolute w-full h-full transform translate-x-8 -translate-y-8" />
-    <div className="flex flex-col  items-center space-y-3">
-      <div className="relative">
-        <div className="absolute inset-0 bg-orange-100 rounded-full blur-md opacity-20 animate-pulse" />
-        <div className="relative bg-gradient-to-br from-green-800 to-green-800 p-3 rounded-full">
-          <Icon className="w-8 h-8 text-green-900300" />
-        </div>
-      </div>
-      <p className="text-3xl font-bold text-white">
-        {label.includes("Prize") && "₹"}
-        {value.toLocaleString()}
-        {label.includes("") ? "+" : ""}
-      </p>
-      <p
-        className="text-green-800 font-medium text-center text-xl"
-        style={{ fontFamily: "Pirata One, cursive" }}
-      >
-        {label}
-      </p>
-    </div>
-  </div>
-);
+const AboutCard = ({ icon: Icon, title, description }) => {
+  const cardRef = useRef(null);
 
-// ✅ Background Image (Using Vite's import.meta.url)
-const bgImage = new URL("../assets/bg-2.jpg", import.meta.url).href;
-
-
-
-
-
-const About = () => {
-  const [animatedStats, setAnimatedStats] = useState({
-    prizes: 0,
-    registration: 0,
-    hackers: 0,
-    projects: 0,
-  });
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Intersection Observer for animation
-  const observerRef = useRef(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.disconnect(); // Disconnect observer once the section is visible
-          }
-        });
+    const card = cardRef.current;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: card,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
       },
-      { rootMargin: "-200px" }
+    });
+
+    tl.fromTo(
+      card,
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "power3.out",
+      }
     );
 
-    observerRef.current = observer;
-    observer.observe(document.querySelector("#stats-section"));
-
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      tl.kill();
     };
   }, []);
 
-  
-  // Stats animation effect
+  return (
+    <div
+      ref={cardRef}
+      className="bg-white/70 backdrop-blur-md p-6 rounded-xl shadow-lg 
+      transform transition-all hover:scale-105 hover:shadow-xl 
+      will-change-transform overflow-hidden"
+    >
+      <div className="flex-center mb-4">
+        <Icon className="w-12 h-12 transform transition-transform duration-300 group-hover:rotate-12 text-[#ba9150]" />
+      </div>
+      <h3 className="text-xl font-bold text-center mb-2 font-general">
+        {title}
+      </h3>
+      <p className="text-gray-700 text-center font-robert-regular">
+        {description}
+      </p>
+    </div>
+  );
+};
 
-  useEffect(() => {
-    const startDelay = 1200;
-    const animationDuration = 2800;
-    const steps = 80;
-    const interval = animationDuration / steps;
+const About = () => {
+  const sectionRef = useRef(null);
 
-    const targetStats = {
-      prizes: 50000,
-      registration: 4000,
-      hackers: 350,
-      projects: 100,
-    };
+  useGSAP(
+    () => {
+      const section = sectionRef.current;
 
-    const incrementValues = {
-      prizes: targetStats.prizes / steps,
-      registration: targetStats.registration / steps,
-      hackers: targetStats.hackers / steps,
-      projects: targetStats.projects / steps,
-    };
-
-    let currentStep = 0;
-
-    const startAnimation = () => {
-      const timer = setInterval(() => {
-        if (currentStep >= steps) {
-          clearInterval(timer);
-          setAnimatedStats(targetStats);
-          return;
+      // Performance-optimized text reveal
+      gsap.fromTo(
+        section.querySelectorAll(".text-reveal"),
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 70%",
+            toggleActions: "play none none reverse",
+          },
         }
+      );
 
-        setAnimatedStats((prev) => ({
-          prizes: Math.min(
-            Math.round(prev.prizes + incrementValues.prizes),
-            targetStats.prizes
-          ),
-          registration: Math.min(
-            Math.round(prev.registration + incrementValues.registration),
-            targetStats.registration
-          ),
-          hackers: Math.min(
-            Math.round(prev.hackers + incrementValues.hackers),
-            targetStats.hackers
-          ),
-          projects: Math.min(
-            Math.round(prev.projects + incrementValues.projects),
-            targetStats.projects
-          ),
-        }));
-
-        currentStep++;
-      }, interval);
-    };
-
-    const timeout = setTimeout(startAnimation, startDelay);
-    return () => clearTimeout(timeout);
-  }, [isVisible]);
+      // Parallax effect for background
+      gsap.to(section, {
+        backgroundPosition: "50% 100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center flex flex-col items-center overflow-y-auto"
-      style={{ backgroundImage: `url(${bgImage})` }}
+      ref={sectionRef}
+      id="about"
+      className="min-h-screen w-screen 
+      bg-fixed bg-cover bg-center py-16 
+      will-change-transform"
     >
-      {/* Fullscreen Particles */}
-      <div className="absolute inset-0 z-10">
-        <BgDots />
-      </div>
-
-      {/* Centered Heading */}
-      <div className="relative z-20 w-full text-center mt-10">
-        
-        <h1 className="relative inline-block text-3xl md:text-4xl font-bold text-green-900 px-5 py-2 rounded-md overflow-hidden">
-          Recon Mission 
-          {/*Animated Border */}
-          <span
-            style={{
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              border: "2px solid white",
-              borderRadius: "5px",
-              boxSizing: "border-box",
-              animation: "border-rotate 5s linear infinite",
-            }}
-          />
-        </h1>
-      </div>
-      
-
-      {/* Stats Section */}
-      <div
-          id="stats-section"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 w-full pt-12"
-        >
-          <StatCard
-            icon={Trophy}
-            value={animatedStats.prizes}
-            label="Prize Pool"
-            delay={0}
-            isVisible={isVisible}
-          />
-          <StatCard
-            icon={TrendingUp}
-            value={animatedStats.registration}
-            label="Registration"
-            delay={200}
-            isVisible={isVisible}
-          />
-          <StatCard
-            icon={Users}
-            value={animatedStats.hackers}
-            label="Hackers"
-            delay={400}
-            isVisible={isVisible}
-          />
-          <StatCard
-            icon={Briefcase}
-            value={animatedStats.projects}
-            label="Projects"
-            delay={600}
-            isVisible={isVisible}
+      <div className="relative container mx-auto px-4 overflow-hidden">
+        <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
+          <AnimatedTitle
+            title="<b>About</b> the <br /> <b>Ragiment</b>"
+            containerClass="mt-8 !text-black text-center reveal-element "
           />
         </div>
 
-      {/* ✅ CSS for Rotating Border */}
-      <style>
-        {`
-    @keyframes border-rotate {
-      0% {
-        clip-path: inset(0 0 98% 0);
-      }
-      25% {
-        clip-path: inset(0 98% 0 0);
-      }
-      50% {
-        clip-path: inset(98% 0 0 0);
-      }
-      75% {
-        clip-path: inset(0 0 0 98%);
-      }
-      100% {
-        clip-path: inset(0 0 98% 0);
-      }
-    }
-  `}
-      </style>
-
-      <div className="flex items-center justify-between w-11/12 md:w-4/5 mt-12 ">
-        {/* Image on Left Side */}
-        <img
-          src={soldier}
-          alt="Hackathon Soldier"
-          className="w-full max-w-[350px] object-contain drop-shadow-md"
-        />
-
-        {/*  Paragraph on Right Side */}
-        <div className="relative bg-black bg-opacity-50 p-5 rounded-lg w-1/2 min-h-[150px] text-center overflow-hidden">
-          {/* Animated Border */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              border: "2px solid transparent",
-              borderRadius: "5px",
-              animation: "border-rotate 8s linear infinite",
-            }}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <AboutCard
+            icon={Target}
+            title="Mission"
+            description="Mobilize innovation and establish a stronghold for the brightest tech minds."
           />
+          <AboutCard
+            icon={Star}
+            title="Vision"
+            description="Lead the digital revolution through strategic collaboration and cutting-edge technologies."
+          />
+          <AboutCard
+            icon={Award}
+            title="Approach"
+            description="Create a dynamic war room of mentors, tactical networking, and hands-on combat training."
+          />
+        </div>
 
-          <p className="text-white text-base leading-relaxed relative z-10">
-            A hackathon is an event where programmers, designers, and developers
-            come together to collaborate on software projects within a limited
-            timeframe. Participants work in teams to build innovative solutions,
-            solve real-world problems, and showcase their technical skills.
-            Hackathons encourage creativity, teamwork, and problem-solving,
-            making them a great platform for learning and networking.
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-2xl text-white/70 max-w-3xl mx-auto font-robert-regular mb-4 text-reveal">
+            Hack4Brahma: Northeast India's Ultimate Code Battleground
+          </p>
+          <p className="text-white/70 text-lg leading-relaxed text-reveal font-robert-regular">
+            We are more than a hackathon—we are a strategic ecosystem where
+            elite tech warriors deploy their skills, strategize with allies, and
+            execute high-stakes missions to conquer universal challenges.
           </p>
         </div>
-
-        {/* CSS for Animated Border */}
-        <style>
-          {`
-    @keyframes border-rotate {
-      0% {
-        border-image: linear-gradient(0deg, white, transparent) 1;
-      }
-      25% {
-        border-image: linear-gradient(90deg, white, transparent) 1;
-      }
-      50% {
-        border-image: linear-gradient(180deg, white, transparent) 1;
-      }
-      75% {
-        border-image: linear-gradient(270deg, white, transparent) 1;
-      }
-      100% {
-        border-image: linear-gradient(360deg, white, transparent) 1;
-      }
-    }
-  `}
-        </style>
       </div>
     </div>
   );
