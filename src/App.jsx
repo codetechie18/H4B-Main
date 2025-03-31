@@ -94,7 +94,6 @@
 import React from "react";
 import Hero from "./Pages/Hero";
 import { Contact } from "lucide-react";
-import Prize from "./Pages/Prize";
 
 const App = () => {
   return (
