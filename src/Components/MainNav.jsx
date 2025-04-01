@@ -18,7 +18,7 @@ const Sidebar = () => {
     { icon: Home, label: 'Home', path: '/' },
     { icon: GalleryIcon, label: 'Gallery', path: '/gallery' },
     { icon: Users, label: 'Partners', path: '/partners' },
-    { icon: Trophy, label: 'Prize', path: '/prizes' },
+    { icon: Trophy, label: 'Prize', path: '/prize' },
     { icon: Calendar, label: 'Schedule', path: '/schedule' },
     { icon: Users, label: 'Humans', path: '/humans' },
     { icon: HelpCircle, label: 'FAQs', path: '/faqs' },

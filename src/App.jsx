@@ -6,6 +6,7 @@ import ManinNav from './Components/MainNav';
 import Hero from './Pages/Hero';
 import Gallery from "./Pages/Gallery";
 import Prize from "./Pages/Prize"; 
+import  Partners from "./Pages/Partners";
 // import Gallery from './pages/Gallery';
 // import Partners from './pages/Partners';
 // import Prizes from './pages/Prizes';
@@ -49,6 +50,7 @@ function App() {
               <Route path="/" element={<Hero />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/prize" element={<Prize />} />
+              <Route path="/partners" element={<Partners />} />
               {/* <Route path="/gallery" element={<Gallery />} />
               <Route path="/partners" element={<Partners />} />
               <Route path="/prizes" element={<Prizes />} />

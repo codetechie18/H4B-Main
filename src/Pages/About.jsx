@@ -116,7 +116,7 @@ const About = () => {
       <div className="relative container mx-auto px-4 overflow-hidden">
         <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
           <AnimatedTitle
-            title="<b>About</b> the <br /> <b>Ragiment</b>"
+            title="<b>About</b> the <br /> <b>Regiment</b>"
             containerClass="mt-8 !text-black text-center reveal-element "
           />
         </div>
