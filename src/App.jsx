@@ -42,9 +42,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Hero />} />
               <Route path="/gallery" element={<Gallery />} />
-              {/* <Route path="/gallery" element={<Gallery />} />
-              <Route path="/prizes" element={<Prizes />} />
-              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/partners" element={<Partners />} />
+              {/* <Route path="/schedule" element={<Schedule />} />
               <Route path="/humans" element={<Humans />} />
               <Route path="/faqs" element={<FAQs />} />
               <Route path="/contact" element={<Contact />} /> */}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Award, Star, Zap, Briefcase } from 'lucide-react';
+import Footer from '../Components/Footer';
 
 const Sponsors = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -145,7 +146,7 @@ const Sponsors = () => {
 
       {/* Animated radar scan effect */}
       <motion.div 
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 opacity-20"
+        className="fixed top-1/2 left-1/2  w-full h-full pointer-events-none z-0 opacity-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.2 }}
         transition={{ duration: 2 }}
@@ -236,29 +237,16 @@ const Sponsors = () => {
           </motion.div>
         ))}
 
-        {/* Call to action */}
+        {/* Call to action
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.5 }}
           className="mt-16 p-8 border-2 border-dashed border-green-600 rounded-lg bg-gradient-to-r from-gray-900 to-gray-800"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0">
-              <h2 className="text-2xl font-bold mb-2">JOIN THE RANKS</h2>
-              <p className="text-gray-300 max-w-xl">Become a sponsor and deploy your organization's support behind the next generation of innovation.</p>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-green-700 hover:bg-green-600 rounded-md font-medium tracking-wider shadow-lg flex items-center"
-            >
-              <Briefcase className="w-5 h-5 mr-2" />
-              REQUEST BRIEFING
-            </motion.button>
-          </div>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
+      <Footer className="mt-16" />
     </div>
   );
 };
