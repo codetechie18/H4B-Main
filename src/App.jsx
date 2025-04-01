@@ -4,6 +4,7 @@ import ManinNav from './Components/MainNav';
 
 // Import your page components
 import Hero from './Pages/Hero';
+import Gallery from "./Pages/Gallery"; 
 // import Gallery from './pages/Gallery';
 // import Partners from './pages/Partners';
 // import Prizes from './pages/Prizes';
@@ -45,6 +46,7 @@ function App() {
           <div className="relative z-10 w-full min-h-screen">
             <Routes>
               <Route path="/" element={<Hero />} />
+              <Route path="/gallery" element={<Gallery />} />
               {/* <Route path="/gallery" element={<Gallery />} />
               <Route path="/partners" element={<Partners />} />
               <Route path="/prizes" element={<Prizes />} />
