@@ -4,7 +4,8 @@ import ManinNav from './Components/MainNav';
 
 // Import your page components
 import Hero from './Pages/Hero';
-import Gallery from "./Pages/Gallery"; 
+import Gallery from "./Pages/Gallery";
+import Prize from "./Pages/Prize"; 
 // import Gallery from './pages/Gallery';
 // import Partners from './pages/Partners';
 // import Prizes from './pages/Prizes';
@@ -47,6 +48,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Hero />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/prize" element={<Prize />} />
               {/* <Route path="/gallery" element={<Gallery />} />
               <Route path="/partners" element={<Partners />} />
               <Route path="/prizes" element={<Prizes />} />

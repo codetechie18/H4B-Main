@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Footer from "../Components/Footer";
 import './Gallery.css';
-
 import AnimatedTitle from "../Components/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -180,7 +179,7 @@ export default function Gallery() {
       <div ref={galleryRef} className="relative min-h-[200px]">
         {isLoading ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#646cff] border-t-transparent"></div>
+            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#167d2c] border-t-transparent"></div>
           </div>
         ) : (
           <Masonry
@@ -234,8 +233,9 @@ export default function Gallery() {
           </div>
         </div>
       )}
-
+       
     </div>
+ 
   );
 }
 
