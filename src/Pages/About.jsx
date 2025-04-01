@@ -110,7 +110,7 @@ const About = () => {
       ref={sectionRef}
       id="about"
       className="min-h-screen w-screen 
-      bg-fixed bg-cover bg-center py-16 
+      bg-fixed bg-cover bg-center py-16 pl-20
       will-change-transform"
     >
       <div className="relative container mx-auto px-4 overflow-hidden">
