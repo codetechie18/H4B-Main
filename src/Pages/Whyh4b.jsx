@@ -89,7 +89,7 @@ const Whyh4b = () => {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen w-full bg-black text-white overflow-hidden"
+      className="relative min-h-screen w-full bg-black text-white overflow-hidden pl-20"
     >
       <div className="relative z-10 container mx-auto px-4 py-16">
         <motion.div
