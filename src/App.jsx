@@ -1,106 +1,63 @@
-// import { useState } from "react";
-// import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-// import { Home, Image, Users, Calendar, Trophy, Info, Phone, Handshake } from "lucide-react";
-// import About from "./Pages/About";
-// import Hero from "./Pages/Hero";
-// import Whyh4b from "./Pages/Whyh4b";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ManinNav from './Components/MainNav';
 
-// const Sidebar = () => {
-//   const [active, setActive] = useState("Home");
+// Import your page components
+import Hero from './Pages/Hero';
+// import Gallery from './pages/Gallery';
+// import Partners from './pages/Partners';
+// import Prizes from './pages/Prizes';
+// import Schedule from './pages/Schedule';
+// import Humans from './pages/Humans';
+// import FAQs from './pages/FAQs';
+// import Contact from './pages/Contact';
 
-//   const menuItems = [
-//     { name: "Home", icon: <Home size={20} />, path: "/" },
-//     { name: "Features", icon: <Image size={20} />, path: "/features" },
-//     { name: "Hero", icon: <Handshake size={20} />, path: "/hero" },
-//     { name: "Why H4B", icon: <Trophy size={20} />, path: "/whyh4b" },
-//     { name: "About", icon: <Calendar size={20} />, path: "/about" },
-//     { name: "Contact", icon: <Phone size={20} />, path: "/contact" },
-//   ];
+function App() {
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
-//   return (
-//     <div className="h-screen w-56 bg-gradient-to-b from-black to-red-700 p-4 rounded-lg flex flex-col">
-//       {menuItems.map((item) => (
-//         <Link
-//           to={item.path}
-//           key={item.name}
-//           className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-300 transition-all duration-300 hover:text-white hover:bg-red-600 ${
-//             active === item.name ? "bg-black text-white" : ""
-//           }`}
-//           onClick={() => setActive(item.name)}
-//         >
-//           {item.icon}
-//           <span className="text-lg">{item.name}</span>
-//         </Link>
-//       ))}
-//     </div>
-//   );
-// };
+  // This function will be passed to Sidebar to notify App of expansion state
+  const handleSidebarExpand = (expanded) => {
+    setSidebarExpanded(expanded);
+  };
 
-// const App = () => {
-//   return (
-//     <Router>
-//       <div className="flex">
-//         <Sidebar />
-//         <div className="flex-1 p-6">
-//           <Routes>
-//             <Route path="/" element={<Hero />} />
-//             <Route path="/hero" element={<Hero />} />
-//             <Route path="/whyh4b" element={<Whyh4b />} />
-//             <Route path="/about" element={<About />} />
-//           </Routes>
-//         </div>
-//       </div>
-//     </Router>
-//   );
-// };
-
-// export default App;
-
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Home from './Pages/Hero';
-// import About from './Pages/About';
-// import Contact from './Pages/Contact';
-// import Features from './Pages/Features';
-// import MainNav from './Components/MainNav';
-
-// function App() {
-//   return (
-//     <Router>
-//       <div className="flex">
-//         <MainNav />
-//         <main className="ml-20 hover:ml-64 transition-all duration-300 flex-grow p-4">
-//           <Routes>
-//             <Route path="/" element={<Home />} />
-//             <Route path="/about" element={<About />} />
-//             <Route path="/contact" element={<Contact />} />
-//             <Route path="/features" element={<Features />} />
-//           </Routes>
-//         </main>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
-
-
-
-
-
-
-
-import React from "react";
-import Hero from "./Pages/Hero";
-import { Contact } from "lucide-react";
-
-const App = () => {
   return (
-    <div>
-      <Hero />
-    </div>
+    <Router>
+      <div className="flex bg-black min-h-screen">
+        <ManinNav onExpandChange={handleSidebarExpand} />
+        <main 
+          className={`
+            transition-all duration-300 
+            ${sidebarExpanded ? 'ml-46' : 'ml-0'} 
+            w-full relative overflow-x-hidden
+          `}
+        >
+          {/* Transparent dot pattern background with improved opacity */}
+          <div className="absolute inset-0 bg-black" style={{ 
+          
+      
+        
+          }}></div>
+          
+          {/* Semi-transparent overlay for depth */}
+          <div className="absolute "></div>
+          
+          {/* Content wrapper */}
+          <div className="relative z-10 w-full min-h-screen">
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              {/* <Route path="/gallery" element={<Gallery />} />
+              <Route path="/partners" element={<Partners />} />
+              <Route path="/prizes" element={<Prizes />} />
+              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/humans" element={<Humans />} />
+              <Route path="/faqs" element={<FAQs />} />
+              <Route path="/contact" element={<Contact />} /> */}
+            </Routes>
+          </div>
+        </main>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
