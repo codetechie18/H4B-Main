@@ -15,7 +15,7 @@ const images = [
   { 
     id: 1, 
     src: '/img/img1.jpg', 
-    category: 'Winners', 
+    // category: 'Winners', 
     // title: 'Grand Prize Winners' 
   },
   { 

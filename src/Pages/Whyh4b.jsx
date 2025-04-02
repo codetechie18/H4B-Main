@@ -100,7 +100,7 @@ const Whyh4b = () => {
         >
           <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
             <AnimatedTitle
-              title="<b>Why</b> <b>H4B?</b>"
+              title="<b>Why</b> <b>Hack4Brahma?</b>"
               containerClass="mt-8 !text-black text-center reveal-element "
             />
           </div>
