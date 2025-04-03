@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Trophy, Award, Star, Users, Sparkles, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import AnimatedTitle from "../Components/AnimatedTitle";
+import Footer from "../Components/Footer";
 
 export default function HackathonPage() {
   const [activeTrack, setActiveTrack] = useState(0)
@@ -135,7 +136,7 @@ export default function HackathonPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden" ref={containerRef}>
+    <div className="min-h-screen bg-black text-white overflow-hidden pl-20" ref={containerRef}>
       <div className="relative w-full">
         {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -321,6 +322,7 @@ export default function HackathonPage() {
    
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
