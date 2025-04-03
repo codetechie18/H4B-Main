@@ -7,8 +7,7 @@ import Hero from './Pages/Hero';
 import Gallery from "./Pages/Gallery";
 import Prize from "./Pages/Prize"; 
 import  Partners from "./Pages/Partners";
-// import Gallery from './pages/Gallery';
-import Partners from './Pages/Partners';
+import Humans from './Pages/Humans';
 // import Prizes from './pages/Prizes';
 // import Schedule from './pages/Schedule';
 // import Humans from './pages/Humans';
@@ -51,7 +50,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/partners" element={<Partners />} />
               <Route path="/prize" element={<Prize />} />
-              <Route path="/partners" element={<Partners />} />
+              <Route path="/humans" element={<Humans />} />
 
 
               {/* <Route path="/gallery" element={<Gallery />} />
