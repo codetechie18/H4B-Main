@@ -8,6 +8,7 @@ import Gallery from "./Pages/Gallery";
 import Prize from "./Pages/Prize"; 
 import  Partners from "./Pages/Partners";
 import Humans from './Pages/Humans';
+import Faqs from './Pages/Faqs';
 // import Prizes from './pages/Prizes';
 // import Schedule from './pages/Schedule';
 // import Humans from './pages/Humans';
@@ -51,6 +52,8 @@ function App() {
               <Route path="/partners" element={<Partners />} />
               <Route path="/prize" element={<Prize />} />
               <Route path="/humans" element={<Humans />} />
+              <Route path="/faqs" element={<Faqs />} />
+           
 
 
               {/* <Route path="/gallery" element={<Gallery />} />
