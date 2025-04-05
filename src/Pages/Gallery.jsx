@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Footer from "../Components/Footer";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
 import './Gallery.css';
 import AnimatedTitle from "../Components/AnimatedTitle";
 
@@ -50,7 +49,7 @@ const images = [
   },
   { 
     id: 7, 
-    src: ' /img/workshop1.jpg', 
+    src: '/img/workshop1.jpg', 
     category: 'Winners', 
     // title: 'Runner Up Project' 
   },
@@ -68,13 +67,13 @@ const images = [
   },
   { 
     id: 10, 
-    src: ' /img/Workshop2.jpg', 
+    src: '/img/Workshop2.jpg', 
     category: 'Winners', 
     // title: 'Closing Ceremony' 
   },
   { 
     id: 11, 
-    src: ' /img/game3.jpg', 
+    src: '/img/game3.jpg', 
     category: 'Workshops', 
     // title: 'Ideation Workshop' 
   },
