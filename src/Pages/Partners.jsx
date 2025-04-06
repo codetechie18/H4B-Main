@@ -1,254 +1,198 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Shield, Award, Star, Zap, Briefcase } from 'lucide-react';
-import Footer from '../Components/Footer';
+import { Shield, Star, Medal, Target, Crosshair, Award, Sword } from 'lucide-react';
+import AnimatedTitle from "../Components/AnimatedTitle";
 
-const Sponsors = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+function Partners() {
+  const [activeSection, setActiveSection] = useState(null);
+
+  // Partner data with military ranks
+  const partners = {
+    general: {
+      title: "GENERAL",
+      description: "Supreme Command Level Partners",
+      icon: Shield,
+      partners: [
+        {
+          name: "Alpha Strategic Command",
+          logo: "img/title.jpg",
+          // description: "Strategic Operations Command",
+          // rank: "5-Star General"
+        },
+        
+      ]
+    },
+    colonel: {
+      title: "COLONEL",
+      description: "Elite Tactical Division",
+      icon: Star,
+      partners: [
+        {
+          name: "Bravo Tactical Systems",
+          logo: "img/colenal.png",
+          // description: "Advanced Combat Solutions",
+          // rank: "Colonel"
+        },
+        {
+          name: "Charlie Defense Corp",
+          logo: "img/colenal.png",
+          // description: "Tactical Defense Unit",
+          // rank: "Lieutenant Colonel"
+        }
+      ]
+    },
+    major: {
+      title: "MAJOR",
+      description: "Special Operations Force",
+      icon: Medal,
+      partners: [
+        {
+          name: "Delta Strike Force",
+          logo: "img/star.png",
+          description: "Specialized Operations",
+          rank: "Major"
+        },
+        {
+          name: "Echo Intelligence",
+          logo: "img/star.png",
+          description: "Tactical Intelligence",
+          rank: "Major"
+        },
+        {
+          name: "Foxtrot Dynamics",
+          logo: "img/star.png",
+          description: "Combat Systems",
+          rank: "Major"
+        }
+      ]
+    }
+  };
 
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    const interval = setInterval(() => {
+      const sections = Object.keys(partners);
+      const currentIndex = sections.indexOf(activeSection);
+      const nextIndex = currentIndex === sections.length - 1 ? 0 : currentIndex + 1;
+      setActiveSection(sections[nextIndex]);
+    }, 3000);
 
-  // Sponsor tiers with military ranks
-  const sponsorTiers = [
-    {
-      tier: "General",
-      icon: Shield,
-      description: "Command-level sponsors providing elite support",
-      color: "from-red-700 to-red-900",
-      sponsors: [
-        { name: "Alpha Defense Systems", logo: "/api/placeholder/200/100", website: "#" },
-        { name: "Strategic Innovations Corp", logo: "/api/placeholder/200/100", website: "#" },
-      ]
-    },
-    {
-      tier: "Major",
-      icon: Award,
-      description: "Field-grade sponsors with exceptional contributions",
-      color: "from-amber-600 to-amber-800",
-      sponsors: [
-        { name: "Tactical Technologies", logo: "/api/placeholder/180/90", website: "#" },
-        { name: "Precision Engineering LLC", logo: "/api/placeholder/180/90", website: "#" },
-        { name: "Forward Operations Group", logo: "/api/placeholder/180/90", website: "#" },
-      ]
-    },
-    {
-      tier: "Captain",
-      icon: Star,
-      description: "Company-level sponsors delivering significant support",
-      color: "from-blue-600 to-blue-800",
-      sponsors: [
-        { name: "Echo Systems", logo: "/api/placeholder/150/75", website: "#" },
-        { name: "Delta Dynamics", logo: "/api/placeholder/150/75", website: "#" },
-        { name: "Sierra Software", logo: "/api/placeholder/150/75", website: "#" },
-        { name: "Bravo Innovations", logo: "/api/placeholder/150/75", website: "#" },
-      ]
-    },
-    {
-      tier: "Lieutenant",
-      icon: Zap,
-      description: "Platoon-level sponsors providing valuable assistance",
-      color: "from-green-600 to-green-800",
-      sponsors: [
-        { name: "Yankee Tech", logo: "/api/placeholder/120/60", website: "#" },
-        { name: "X-Ray Solutions", logo: "/api/placeholder/120/60", website: "#" },
-        { name: "Whiskey Web Development", logo: "/api/placeholder/120/60", website: "#" },
-        { name: "Victor Ventures", logo: "/api/placeholder/120/60", website: "#" },
-        { name: "Uniform United", logo: "/api/placeholder/120/60", website: "#" },
-      ]
-    },
-    {
-      tier: "Sergeant",
-      icon: Briefcase,
-      description: "Squad-level sponsors backing our mission",
-      color: "from-gray-600 to-gray-800",
-      sponsors: [
-        { name: "Tango Training", logo: "/api/placeholder/100/50", website: "#" },
-        { name: "Romeo Research", logo: "/api/placeholder/100/50", website: "#" },
-        { name: "Papa Products", logo: "/api/placeholder/100/50", website: "#" },
-        { name: "Oscar Outfitters", logo: "/api/placeholder/100/50", website: "#" },
-        { name: "November Networks", logo: "/api/placeholder/100/50", website: "#" },
-        { name: "Mike Media", logo: "/api/placeholder/100/50", website: "#" },
-      ]
-    },
-  ];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3
-      }
-    }
-  };
-
-  const tierVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const sponsorVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        type: "spring",
-        stiffness: 100
-      }
-    }
-  };
+    return () => clearInterval(interval);
+  }, [activeSection]);
 
   return (
-    <div className="py-12 px-6 pl-28 text-gray-100">
-      {/* Hero section with military design */}
-      <div className="relative mb-16">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-800 opacity-90 rounded-lg"></div>
-        <div className="relative p-8 border-l-4 border-green-500 rounded-lg">
-          <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center">
-            <motion.div
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block mr-3"
-            >
-              <Shield className="w-10 h-10 text-green-500" />
-            </motion.div>
-            MISSION ALLIES
-          </h1>
-          <p className="text-xl max-w-3xl">
-            Our hackathon success is backed by these organizations who have enlisted to support innovation and development in the field. We salute their commitment.
-          </p>
-          
-          <motion.div 
-            className="absolute top-3 right-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            <div className="px-4 py-2 bg-green-800/50 backdrop-blur-sm rounded border border-green-600 flex items-center">
-              <Star className="w-5 h-5 mr-2 text-green-400" />
-              <span>INTELLIGENCE REPORT: SPONSOR DIVISION</span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Animated radar scan effect */}
-      <motion.div 
-        className="fixed top-1/2 left-1/2  w-full h-full pointer-events-none z-0 opacity-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
-        transition={{ duration: 2 }}
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div 
-            className="w-[800px] h-[800px] rounded-full border-2 border-green-500"
-            initial={{ scale: 0 }}
-            animate={{ scale: [0, 1.5, 0], opacity: [0, 0.6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, repeatType: "loop" }}
+    <div className="min-h-screen bg-black text-gray-100 relative overflow-hidden">
+    <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
+          <AnimatedTitle
+            title=" <b>Partners</b>"
+            containerClass="mt-8 !text-black text-center reveal-element "
           />
         </div>
-      </motion.div>
+      {/* Background Radar Animation */}
+      {/* <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-500/5 via-transparent to-transparent opacity-30" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="relative w-[800px] h-[800px]">
+            <div className="absolute inset-0 border-2 border-green-500/10 rounded-full animate-ping" />
+            <div className="absolute inset-0 border border-green-500/20 rounded-full" />
+            <div 
+              className="absolute w-full h-1 bg-gradient-to-r from-green-500/30 to-transparent origin-left"
+              style={{
+                animation: 'radar-sweep 4s linear infinite',
+                transformOrigin: 'left center',
+              }}
+            />
+          </div>
+        </div>
+      </div> */}
 
-      {/* Sponsors content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
-        className="relative z-10"
-      >
-        {sponsorTiers.map((tier, tierIndex) => (
-          <motion.div 
-            key={tier.tier} 
-            variants={tierVariants}
-            className="mb-16"
-          >
-            <div className="flex items-center mb-6">
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.8 }}
-                className={`p-3 rounded-full bg-gradient-to-br ${tier.color} mr-4 shadow-lg`}
-              >
-                <tier.icon className="w-6 h-6 text-white" />
-              </motion.div>
-              <div>
-                <h2 className="text-2xl font-bold tracking-wider">{tier.tier.toUpperCase()} TIER</h2>
-                <p className="text-gray-400">{tier.description}</p>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-20">
+           
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <div className="h-px w-12 bg-green-500/50" />
+            <Star className="w-6 h-6 text-green-500" />
+            <div className="h-px w-12 bg-green-500/50" />
+          </div>
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+            Elite organizations united under our command, supporting the advancement of military technology and innovation
+          </p>
+        </div>
+
+        {/* Partners Grid */}
+        <div className="space-y-24">
+          {Object.entries(partners).map(([key, tier]) => (
+            <div 
+              key={key}
+              className={`
+                relative rounded-lg p-8
+                
+                transition-all duration-500
+              `}
+            >
+              {/* Tier Header */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-green-600 to-green-900 rounded-full mb-4">
+                  <tier.icon className="w-8 h-8" />
+                </div>
+                <h2 className="text-3xl font-bold tracking-wider mb-2">{tier.title}</h2>
+                <p className="text-green-500">{tier.description}</p>
+              </div>
+
+              {/* Partners */}
+              <div className={`
+                grid gap-8 justify-items-center
+                ${key === 'general' ? 'grid-cols-1' : 
+                  key === 'colonel' ? 'grid-cols-1 md:grid-cols-2' : 
+                  'grid-cols-1 md:grid-cols-3'}
+              `}>
+                {tier.partners.map((partner) => (
+                  <div 
+                    key={partner.name}
+                    className="relative w-full max-w-md group"
+                  >
+                     
+                    <div className="relative p-6 border border-gray-700 rounded-lg overflow-hidden">
+                      {/* Military Corner Decorations */}
+                      <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-500" />
+                      <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-500" />
+                      <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green-500" />
+                      <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-500" />
+                      
+                      {/* Rank Badge */}
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-green-900/80 rounded-full border border-green-500/50 text-xs font-mono">
+                        {partner.rank}
+                      </div>
+
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name}
+                        className="w-full h-49 object-cover mb-6 rounded transition-transform duration-300 group-hover:scale-105"
+                      />
+                      
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold mb-2">{partner.name}</h3>
+                        <p className="text-gray-400">{partner.description}</p>
+                      </div>
+                      
+                      {/* Scanning Line Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className={`
-              grid gap-6 
-              ${tier.tier === "General" ? "grid-cols-1 md:grid-cols-2" :
-                tier.tier === "Major" ? "grid-cols-1 md:grid-cols-3" :
-                "grid-cols-2 md:grid-cols-4"}
-            `}>
-              {tier.sponsors.map((sponsor, sponsorIndex) => (
-                <motion.a
-                  key={sponsor.name}
-                  href={sponsor.website}
-                  variants={sponsorVariants}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
-                  }}
-                  className={`
-                    bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-700
-                    p-6 flex flex-col items-center justify-center
-                    transition-all duration-300
-                    hover:border-${tier.color.split(' ')[1]}
-                    relative overflow-hidden
-                  `}
-                >
-                  {/* Military style corner decorations */}
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-500"></div>
-                  <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-500"></div>
-                  <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green-500"></div>
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-500"></div>
+        {/* Military Footer Decoration */}
+         
+      </div>
 
-                  <img src={sponsor.logo} alt={sponsor.name} className="mb-4 object-contain" />
-                  <h3 className="text-center font-mono text-sm tracking-wider">{sponsor.name}</h3>
-                  
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent"
-                    initial={{ x: "-100%" }}
-                    animate={{ x: ["100%", "-100%"] }}
-                    transition={{ 
-                      repeat: Infinity, 
-                      duration: 2, 
-                      delay: tierIndex * 0.2 + sponsorIndex * 0.1,
-                      repeatDelay: 5
-                    }}
-                  />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Call to action
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="mt-16 p-8 border-2 border-dashed border-green-600 rounded-lg bg-gradient-to-r from-gray-900 to-gray-800"
-        >
-        </motion.div> */}
-      </motion.div>
-      <Footer className="mt-16" />
+       
     </div>
   );
-};
+}
 
-export default Sponsors;
+export default Partners;

@@ -1,241 +1,189 @@
-import { useEffect, useRef, useState } from 'react';
-import Masonry from 'react-masonry-css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
-import './Gallery.css';
+import React from 'react';
+import { Users, Clock, Calendar } from 'lucide-react';
 import AnimatedTitle from "../Components/AnimatedTitle";
+ 
 
-gsap.registerPlugin(ScrollTrigger);
+const Gallery = () => {
+  const stats = [
+    {
+      text: "500+ Hackers",
+      icon: <Users className="w-8 h-8" />
+    },
+    {
+      text: "24+ Hack Hours",
+      icon: <Clock className="w-8 h-8" />
+    },
+    {
+      text: "10+ Events",
+      icon: <Calendar className="w-8 h-8" />
+    }
+  ];
 
-// Previous Hackathon Highlights
-// Explore our gallery of memorable moments from HackByte 2.0 event at IIITDM Jabalpur.
-
-const images = [
-  { 
-    id: 1, 
-    src: '/img/img1.jpg', 
-    // category: 'Winners', 
-    // title: 'Grand Prize Winners' 
-  },
-  { 
-    id: 2, 
-    src: '/img/img2.jpg', 
-    category: 'Workshops', 
-    // title: 'Web Dev Workshop' 
-  },
-  { 
-    id: 3, 
-    src: '/img/game1.jpg', 
-    category: 'Participants', 
-    // title: 'Team Collaboration' 
-  },
-  { 
-    id: 4, 
-    src: '/img/img3.jpg', 
-    category: 'Winners', 
-    // title: 'Best Innovation' 
-  },
-  { 
-    id: 5, 
-    src: '/img/img4.jpg', 
-    category: 'Workshops', 
-    // title: 'Pitch Practice' 
-  },
-  { 
-    id: 6, 
-    src: '/img/img5.jpg', 
-    category: 'Participants', 
-    // title: 'Late Night Coding' 
-  },
-  { 
-    id: 7, 
-    src: '/img/workshop1.jpg', 
-    category: 'Winners', 
-    // title: 'Runner Up Project' 
-  },
-  { 
-    id: 8, 
-    src: '/img/game2.jpg', 
-    category: 'Workshops', 
-    // title: 'Mentorship Session' 
-  },
-  { 
-    id: 9, 
-    src: '/img/img6.jpg', 
-    category: 'Participants', 
-    // title: 'Team Building' 
-  },
-  { 
-    id: 10, 
-    src: '/img/Workshop2.jpg', 
-    category: 'Winners', 
-    // title: 'Closing Ceremony' 
-  },
-  { 
-    id: 11, 
-    src: '/img/game3.jpg', 
-    category: 'Workshops', 
-    // title: 'Ideation Workshop' 
-  },
-  { 
-    id: 12, 
-    src: '/img/img6.jpg', 
-    category: 'Participants', 
-    // title: 'Midnight Debugging' 
-  }
-];
-
-const categories = ['All', 'Winners', 'Workshops', 'Participants'];
-
-export default function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedImage, setSelectedImage] = useState(null);
-  const galleryRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadedImages, setLoadedImages] = useState(new Set());
-
-  const filteredImages = selectedCategory === 'All'
-    ? images
-    : images.filter(img => img.category === selectedCategory);
-
-  const breakpointColumns = {
-    default: 3,
-    1100: 2,
-    700: 1
-  };
-
-  useEffect(() => {
-    const loadImage = (src) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => {
-          setLoadedImages(prev => new Set([...prev, src]));
-          resolve();
-        };
-      });
-    };
-
-    Promise.all(filteredImages.map(img => loadImage(img.src)))
-      .then(() => {
-        setIsLoading(false);
-        const items = galleryRef.current.querySelectorAll('.gallery-item');
-        
-        gsap.fromTo(items, 
-          {
-            opacity: 0,
-            y: 50
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: galleryRef.current,
-              start: "top center+=100",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      });
-  }, [selectedCategory, filteredImages]);
-
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
-    gsap.fromTo(
-      ".lightbox-content",
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }
-    );
-  };
+  const images = [
+    {
+      image: "img/img1.jpg",
+      
+    },
+    {
+      image: "img/img2.jpg",
+      
+    },
+    {
+      image: "img/img5.jpg",
+      
+    },
+    {
+      image: "img/workshop2.jpg",
+ 
+    },
+    {
+      image: " img/game1.jpg",
+       
+    },
+    {
+      image: "img/img6.jpg",
+     
+    },
+    {
+      image: "img/workshop1.jpg",
+      
+    },
+    {
+      image: "img/game2.jpg",
+       
+    },
+    {
+      image: "img/img4.jpg",
+       
+    },
+    {
+      image: "img/img3.jpg",
+       
+    }
+  ];
 
   return (
-    <div className="gallery-container">
-     <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
-            <AnimatedTitle
-              title="<b>Previous</b> <b>Hackathon </b> </br> <b>Highlightes </b>"
-              containerClass="mt-8 !text-black text-center reveal-element "
-            />
-          </div>
-<p class="text-center text-white text-2xl">Explore our gallery of memorable moments from CodeHunt event at Nagpur.</p>
-
+    <div className="container mx-auto px-4 py-16">
+      <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
+          <AnimatedTitle
+            title=" <b>higlights</b>"
+            containerClass="mt-8 !text-black text-center reveal-element "
+          />
+        </div>
+         
+          
+     
       
-
-      <div className="filters">
-        {categories.map(category => (
-          <button
-            key={category}
-            className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      <div ref={galleryRef} className="relative min-h-[200px]">
-        {isLoading ? (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#167d2c] border-t-transparent"></div>
-          </div>
-        ) : (
-          <Masonry
-            breakpointCols={breakpointColumns}
-            className="masonry-grid"
-            columnClassName="masonry-grid_column"
-          >
-            {filteredImages.map((image) => (
-              <div
-                key={image.id}
-                className="gallery-item"
-                onClick={() => handleImageClick(image)}
-              >
-                <img 
-                  src={image.src} 
-                  alt={image.title}
-                  className={`transition-opacity duration-300 ${
-                    loadedImages.has(image.src) ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-                <div className="image-overlay">
-                  <h3 className="text-lg font-semibold">{image.title}</h3>
-                  <span className="text-sm opacity-75">{image.category}</span>
-                </div>
-              </div>
-            ))}
-          </Masonry>
-        )}
-      </div>
-
-      {selectedImage && (
-        <div 
-          className="lightbox" 
-          onClick={() => setSelectedImage(null)}
-        >
-          <div 
-            className="lightbox-content"
-            onClick={e => e.stopPropagation()}
-          >
-            <img src={selectedImage.src} alt={selectedImage.title} />
-            <button 
-              className="close-btn"
-              onClick={() => setSelectedImage(null)}
-            >
-              ×
-            </button>
-            <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="text-xl font-semibold">{selectedImage.title}</h3>
-              <span className="opacity-75">{selectedImage.category}</span>
-            </div>
+      {/* First Row */}
+      <div className="grid grid-cols-3 gap-8 mb-8">
+        <div className="relative group overflow-hidden rounded-2xl  h-[400px]">
+          <img
+            src={images[0].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[0].className}`}
+          />
+           <div className="text-center">
+            {stats[0].icon}
+            <p className="text-3xl font-bold mt-4 text-green-800">{stats[0].text}</p>
           </div>
         </div>
-      )}
-       
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+  <img
+    src={images[1].image}
+    alt="Gallery"
+    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[1].className}`}
+  />
+</div>
+
+<div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+  <img
+    src={images[9].image}
+    alt="Gallery"
+    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[9].className}`}
+  />
+</div>
+      </div>
+
+      {/* Second Row */}
+      <div className="grid grid-cols-3 gap-8 mb-8">
+      <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <img
+            src={images[2].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[2].className}`}
+          />
+        </div>
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <div className="text-center mt-40">
+            {stats[1].icon}
+            <p className="text-3xl font-bold mt-4 text-green-800">{stats[1].text}</p>
+          </div>
+        </div>
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+          <img
+            src={images[3].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[3].className}`}
+          />
+        </div>
+      </div>
+
+      {/* Third Row */}
+      <div className="grid grid-cols-3 gap-8">
+      <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+        <img
+            src={images[5].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[5].className}`}
+          />
+        </div>
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+          <img
+            src={images[4].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[4].className}`}
+          />
+          <div className="text-center">
+            {stats[2].icon}
+            <p className="text-3xl font-bold mt-4 text-green-800">{stats[2].text}</p>
+          </div>
+        </div>
+          <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <img
+            src={images[5].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[5].className}`}
+          />
+        </div>
+      </div>
+
+      {/* Fourth Row */}
+      <div className="grid grid-cols-3 gap-8 mt-8">
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+          <img
+            src={images[6].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[6].className}`}
+          />
+        </div>
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <img
+            src={images[7].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[7].className}`}
+          />
+        </div>
+
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <img
+            src={images[8].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[7].className}`}
+          />
+        </div>
+      </div>
     </div>
- 
   );
-}
+};
 
-
+export default Gallery;
