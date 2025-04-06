@@ -89,22 +89,22 @@ const Whyh4b = () => {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen w-full bg-black text-white overflow-hidden pl-20"
+      className="relative min-h-screen w-full bg-black text-white overflow-hidden px-4 sm:px-6 md:pl-20"
     >
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto py-8 sm:py-12 md:py-16">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={titleVariants}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
+          <div className="relative flex flex-col items-center container mx-auto px-2 sm:px-4 text-[#198f51] mb-6 sm:mb-10">
             <AnimatedTitle
               title="<b>Why</b> <b>Hack4Brahma?</b>"
-              containerClass="mt-8 !text-black text-center reveal-element "
+              containerClass="mt-4 sm:mt-8 !text-black text-center reveal-element"
             />
           </div>
-          <p className="text-2xl text-white/70 max-w-3xl mx-auto font-robert-regular">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-3xl mx-auto font-robert-regular px-2">
             We are more than just a development team. We are innovation
             architects, design visionaries, and technology pioneers committed to
             transforming digital landscapes.
@@ -112,7 +112,7 @@ const Whyh4b = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 grid-cols-2 gap-8 p-3"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 p-2 sm:p-3"
           initial="hidden"
           animate="visible"
           variants={{
@@ -145,21 +145,21 @@ const Whyh4b = () => {
               }}
               className={`
                 bg-white/70 
-                 p-6 rounded-xl shadow-2xl 
+                p-4 sm:p-6 rounded-xl shadow-2xl 
                 border border-blue-900/20 
                 hover:border-blue-500/50 
                 transition-all duration-300
               `}
             >
-              <div className="mb-4 flex items-center">
-                <span className="mr-3 text-3xl">{feature.icon}</span>
+              <div className="mb-3 sm:mb-4 flex items-center flex-wrap sm:flex-nowrap">
+                <span className="mr-2 sm:mr-3 text-2xl sm:text-3xl">{feature.icon}</span>
                 <h3
-                  className={`text-2xl font-general font-semibold ${feature.color}`}
+                  className={`text-lg sm:text-xl md:text-2xl font-general font-semibold ${feature.color}`}
                 >
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-black text-xl font-robert-regular leading-relaxed">
+              <p className="text-black text-base sm:text-lg md:text-xl font-robert-regular leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>
@@ -167,7 +167,7 @@ const Whyh4b = () => {
         </motion.div>
 
         <motion.div
-          className="mt-16 text-center"
+          className="mt-8 sm:mt-12 md:mt-16 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{
             opacity: 1,
@@ -179,11 +179,11 @@ const Whyh4b = () => {
           }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-8 text-[#198f51] font-general">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-[#198f51] font-general">
             Our Commitment to Excellence
           </h2>
-          <div className="max-w-4xl mx-auto bg-white/70 p-8 rounded-xl shadow-2xl border border-green-900/20">
-            <p className="text-xl text-black leading-relaxed font-robert-regular">
+          <div className="max-w-4xl mx-auto bg-white/70 p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl border border-green-900/20">
+            <p className="text-base sm:text-lg md:text-xl text-black leading-relaxed font-robert-regular">
               At H4B, we believe in the power of technology to create meaningful
               digital experiences. Our multidisciplinary team combines technical
               expertise, creative thinking, and a passion for innovation to
@@ -198,12 +198,3 @@ const Whyh4b = () => {
 };
 
 export default Whyh4b;
-
-{
-  /* <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
-<AnimatedTitle
-  title="<b>Why</b> H4B?"
-  containerClass="mt-8 !text-black text-center reveal-element "
-/>
-</div> */
-}
