@@ -11,17 +11,22 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@react-three/fiber": "^9.1.2",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.6.3",
     "gl-matrix": "^3.4.3",
     "gsap": "^3.12.7",
     "lucide-react": "^0.483.0",
+    "motion": "^12.6.3",
+    "ogl": "^1.0.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0",
+    "react-icons": "^5.5.0",
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^7.4.1",
-    "react-use": "^17.5.1"
+    "react-use": "^17.5.1",
+    "tailwind-merge": "^3.1.0",
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
@@ -38,6 +43,6 @@
     "postcss": "^8.4.49",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.17",
-    "vite": "^5.4.10"
+    "vite": "^6.2.5"
   }
 }
