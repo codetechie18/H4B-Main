@@ -271,3 +271,47 @@ body {
     opacity: 0.8;
   }
 }
+
+
+
+@keyframes neon-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.neon-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 1.5rem; /* matches rounded-3xl */
+  padding: 2px;
+  background: linear-gradient(270deg, #00ffcc, #00ccff, #00ffcc, #00ccff);
+  background-size: 400% 400%;
+  animation: neon-border 6s ease infinite;
+  mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+}
+
+.radial-hover-bg {
+  background: radial-gradient(circle at center, #000000 0%, #000000 100%);
+  transition: background 0.6s ease;
+}
+
+.radial-hover-bg:hover {
+  background: radial-gradient(circle at center, #000000 0%, #000080 100%);
+}
