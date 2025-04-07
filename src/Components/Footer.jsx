@@ -12,7 +12,7 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-black  text-white">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 pl-20">
         {/* Left: Branding */}
         <div>
           <h4 className="text-2xl font-bold mb-4 text-[#198f51]">Hack4Brahma</h4>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Clock, Calendar } from 'lucide-react';
 import AnimatedTitle from "../Components/AnimatedTitle";
+import Footer from '../Components/Footer';
  
 
 const Gallery = () => {
@@ -174,7 +175,7 @@ const Gallery = () => {
           />
         </div>
 
-        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px] mb-40">
           <img
             src={images[8].image}
             alt="Gallery"
@@ -182,6 +183,7 @@ const Gallery = () => {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

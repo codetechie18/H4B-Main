@@ -69,7 +69,7 @@ const Loader = () => {
         {text.split("").map((letter, index) => (
           <motion.span
             key={index}
-            className={`text-9xl sm:text-6xl md:text-[270px] font-zentry font-bold ${
+            className={`text-7xl sm:text-6xl md:text-[270px] font-zentry font-bold ${
               letter === "4" ? "text-[#198f51]" : "text-white"
             }`}
             variants={letterVariants}
