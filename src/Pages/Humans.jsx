@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 import {
   motion,
@@ -8,6 +7,7 @@ import {
 } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import AnimatedTitle from "../Components/AnimatedTitle";
+import Footer from "../Components/Footer";
 
 const springValues = {
   damping: 30,
@@ -79,7 +79,9 @@ const OrganizerCard = ({ member }) => {
 
       <div className="text-center mt-4 z-10">
         <h3 className="text-xl font-general">{member.name}</h3>
-        <p className="text-sm font-robert-regular text-gray-300 mt-1">{member.label}</p>
+        <p className="text-sm font-robert-regular text-gray-300 mt-1">
+          {member.label}
+        </p>
       </div>
 
       <div className="flex gap-4 text-2xl text-gray-300 mt-5 z-10">
@@ -100,44 +102,74 @@ const OrganizerCard = ({ member }) => {
 const Organizers = () => {
   const organizers = [
     {
-      name: "Aarav Shah",
+      name: "Pradhunya Shah",
       label: "Lead Organizer",
-      src: "/img/human1.png",
+      src: "/img/pradhunya.png",
     },
     {
-      name: "Sneha Patel",
+      name: "Sujal Patel",
       label: "Design Lead",
-      src: "/img/human2.png",
+      src: "/img/sujal.png",
     },
     {
-      name: "Rohan Mehta",
+      name: "Kritika Mehta",
       label: "Tech Head",
-      src: "/img/human1.png",
+      src: "/img/kritika.png",
     },
     {
-      name: "Ishita Verma",
+      name: "Pranav Verma",
       label: "Sponsorship",
-      src: "/img/human2.png",
+      src: "/img/pranav.png",
     },
     {
-      name: "Devansh Gupta",
+      name: "Rishu Gupta",
       label: "Operations",
-      src: "/img/human1.png",
+      src: "/img/rishu.png",
     },
     {
-      name: "Mira Roy",
+      name: "Ayush Thakre",
       label: "Marketing",
-      src: "/img/human2.png",
+      src: "/img/ayush.png",
     },
     {
-      name: "Ritik Singh",
+      name: "Akshay Singh",
       label: "Event Coordinator",
-      src: "/img/human1.png",
+      src: "/img/akshay.png",
     },
     {
-      name: "Anaya Joshi",
+      name: "Himanshi Joshi",
       label: "Logistics Lead",
-      src: "/img/human2.png",
+      src: "/img/himanshi.png",
+    },
+    {
+      name: "Harsh Joshi",
+      label: "Logistics Lead",
+      src: "/img/harsh.png",
+    },
+    {
+      name: "Mrunali Joshi",
+      label: "Logistics Lead",
+      src: "/img/mrunali.png",
+    },
+    {
+      name: "Navinya Joshi",
+      label: "Logistics Lead",
+      src: "/img/navinya.png",
+    },
+    {
+      name: "Vaibhavi Joshi",
+      label: "Logistics Lead",
+      src: "/img/vaibhavi.png",
+    },
+    {
+      name: "Sahal Joshi",
+      label: "Logistics Lead",
+      src: "/img/sahal.png",
+    },
+    {
+      name: "Sunidhi Joshi",
+      label: "Logistics Lead",
+      src: "/img/sunidhi.png",
     },
   ];
 
@@ -147,13 +179,15 @@ const Organizers = () => {
         title="<b>Humans</b>"
         containerClass="mt-8 text-black text-center reveal-element"
       />
-      <div className="mt-16 w-full flex justify-center">
+      <div className="mt-16 py-8 sm:py-12 md:py-16 w-full flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16 max-w-6xl w-full justify-items-center">
           {organizers.map((member, index) => (
             <OrganizerCard key={index} member={member} />
           ))}
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };
