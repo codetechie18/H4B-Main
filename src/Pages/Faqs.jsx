@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import AnimatedTitle from "../Components/AnimatedTitle";
 import CircularGallery from '../Components/CircularGallery'
+import Footer from "../Components/Footer";
+
 
 
 export default function Faqs() {
@@ -133,9 +135,10 @@ export default function Faqs() {
         </div>
       </div>
 
-      <div style={{ height: "600px", position: "relative" }}>
+      <div className="relative, h-[600px] py-8 sm:py-12 md:py-16">
         <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.1} />
       </div>
+      <Footer />
     </div>
   );
 }
