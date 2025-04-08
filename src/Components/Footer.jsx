@@ -44,7 +44,7 @@ const Footer = () => {
           <h4 className="text-xl font-bold mb-4 text-[#198f51]">Contact Us</h4>
           <div className="text-sm text-gray-400">
             <p>Email: <a href="mailto:contact@hack4brahma.com" className="hover:text-[#198f51]">hack4brahma@gmail.com</a></p>
-            <p>Support: <a href="tel:+917776955168" className="hover:text-[#198f51]">+917776955168</a></p>
+            <p>Support: <a href="tel:+917776955168" className="hover:text-[#198f51]">+91 7776955168</a></p>
           </div>
         </div>
       </div>
