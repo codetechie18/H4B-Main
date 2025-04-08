@@ -102,29 +102,25 @@ const OrganizerCard = ({ member }) => {
 const Organizers = () => {
   const organizers = [
     {
-      name: "Pradhunya Shah",
-      label: "Lead Organizer",
-      src: "/img/pradhunya.png",
-    },
-    {
-      name: "Sujal Patel",
+      name: "Sujal Khade",
       label: "Design Lead",
       src: "/img/sujal.png",
     },
     {
-      name: "Kritika Mehta",
+      name: "Kritika Rukhiyana",
       label: "Tech Head",
       src: "/img/kritika.png",
     },
+   
     {
-      name: "Pranav Verma",
-      label: "Sponsorship",
-      src: "/img/pranav.png",
-    },
-    {
-      name: "Rishu Gupta",
+      name: "Rishu Singh",
       label: "Operations",
       src: "/img/rishu.png",
+    },
+    {
+      name: "Pradhunya Gawande",
+      label: "Org",
+      src: "/img/pradhunya.png",
     },
     {
       name: "Ayush Thakre",
@@ -132,7 +128,12 @@ const Organizers = () => {
       src: "/img/ayush.png",
     },
     {
-      name: "Akshay Singh",
+      name: "Pranav Tekale",
+      label: "Sponsorship",
+      src: "/img/pranav.png",
+    },
+    {
+      name: "Akshay Gangasagar",
       label: "Event Coordinator",
       src: "/img/akshay.png",
     },
@@ -142,32 +143,32 @@ const Organizers = () => {
       src: "/img/himanshi.png",
     },
     {
-      name: "Harsh Joshi",
+      name: "Harsh Kumar",
       label: "Logistics Lead",
       src: "/img/harsh.png",
     },
     {
-      name: "Mrunali Joshi",
+      name: "Mrunali Dhopte",
       label: "Logistics Lead",
       src: "/img/mrunali.png",
     },
     {
-      name: "Navinya Joshi",
+      name: "Navinya Yede",
       label: "Logistics Lead",
       src: "/img/navinya.png",
     },
     {
-      name: "Vaibhavi Joshi",
+      name: "Vaibhavi Mangarulkar",
       label: "Logistics Lead",
       src: "/img/vaibhavi.png",
     },
     {
-      name: "Sahal Joshi",
+      name: "Sahal",
       label: "Logistics Lead",
       src: "/img/sahal.png",
     },
     {
-      name: "Sunidhi Joshi",
+      name: "Sunidhi",
       label: "Logistics Lead",
       src: "/img/sunidhi.png",
     },

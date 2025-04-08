@@ -9,6 +9,7 @@ import Prize from "./Pages/Prize";
 import  Partners from "./Pages/Partners";
 import Humans from './Pages/Humans';
 import Faqs from './Pages/Faqs';
+import Tracks from './Pages/Tracks';
 // import Prizes from './pages/Prizes';
 // import Schedule from './pages/Schedule';
 // import Humans from './pages/Humans';
@@ -53,12 +54,12 @@ function App() {
               <Route path="/prize" element={<Prize />} />
               <Route path="/humans" element={<Humans />} />
               <Route path="/faqs" element={<Faqs />} />
-           
+              <Route path="/tracks" element={<Tracks />} />
 
 
               {/* <Route path="/gallery" element={<Gallery />} />
               
-              <Route path="/prizes" element={<Prizes />} />
+              
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/humans" element={<Humans />} />
               <Route path="/faqs" element={<FAQs />} />

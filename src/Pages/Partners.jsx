@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Shield, Star, Medal, Target, Crosshair, Award, Sword } from 'lucide-react';
 import AnimatedTitle from "../Components/AnimatedTitle";
-import Footer from "../Components/Footer";
+import Footer from '../Components/Footer';
 
 function Partners() {
   const [activeSection, setActiveSection] = useState(null);
@@ -190,10 +190,8 @@ function Partners() {
         {/* Military Footer Decoration */}
          
       </div>
-      <div className="mt-20">
-        <Footer />
-      </div>
-       
+
+       <Footer />
     </div>
   );
 }

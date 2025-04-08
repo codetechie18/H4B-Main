@@ -1,7 +1,9 @@
 import React from 'react';
 import { Users, Clock, Calendar, Handshake, CheckCircle } from 'lucide-react';
 import AnimatedTitle from "../Components/AnimatedTitle";
-import Footer from "../Components/Footer.jsx";
+
+import Footer from '../Components/Footer';
+ 
 
 const CornerBorderWrapper = ({ children }) => (
   <div className="relative">
@@ -22,6 +24,7 @@ const CornerBorderWrapper = ({ children }) => (
   </div>
   </div>
 );
+
 
 const Gallery = () => {
   const stats = [
@@ -237,6 +240,31 @@ const Gallery = () => {
         />
       </div>
 
+
+      {/* Fourth Row */}
+      <div className="grid grid-cols-3 gap-8 mt-8">
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl">
+          <img
+            src={images[6].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[6].className}`}
+          />
+        </div>
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px]">
+          <img
+            src={images[7].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[7].className}`}
+          />
+        </div>
+
+        <div className="relative group overflow-hidden rounded-2xl shadow-xl w-full h-[400px] mb-40">
+          <img
+            src={images[8].image}
+            alt="Gallery"
+            className={`w-full object-cover transition-transform duration-500 group-hover:scale-110 ${images[7].className}`}
+          />
+
       {/* Mobile view */}
       <MobileGallery />
       
@@ -262,6 +290,7 @@ const Gallery = () => {
           <CornerBorderWrapper>
             <img src={images[2].image} className="w-full h-48 object-cover rounded-lg" />
           </CornerBorderWrapper>
+
         </div>
 
         {/* Stat Block */}
@@ -335,6 +364,7 @@ const Gallery = () => {
       <div className="mt-20">
         <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
