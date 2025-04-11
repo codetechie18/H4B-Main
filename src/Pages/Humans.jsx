@@ -138,7 +138,7 @@ const Organizers = () => {
       src: "/img/akshay.png",
     },
     {
-      name: "Himanshi Joshi",
+      name: "Himanshi Agrawal",
       // label: "Logistics Lead",
       src: "/img/himanshi.png",
     },
