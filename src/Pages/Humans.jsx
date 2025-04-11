@@ -98,6 +98,13 @@ const OrganizerCard = ({ member }) => {
 const Organizers = () => {
   const organizers = [
     {
+      name: "Sujal Khade",
+      // label: "Tech Head",
+      src: "/img/sujal.png",
+      linkedin: "https://www.linkedin.com/in/sujal-khade-2823a32a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      twitter: "https://x.com/CodeTechie43?t=mTB5xj5Xm0mxEtD78UeReQ&s=09",
+    },
+    {
       name: "Kritika Rukhiyana",
       // label: "Tech Head",
       src: "/img/kritika.png",
