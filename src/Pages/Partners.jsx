@@ -9,60 +9,58 @@ function Partners() {
   // Partner data with military ranks
   const partners = {
     general: {
-      title: "GENERAL",
-      description: "Supreme Command Level Partners",
+      // title: "GENERAL",
+      // description: "Supreme Command Level Partners",
       icon: Shield,
       partners: [
         {
-          name: "Alpha Strategic Command",
-          logo: "img/title.jpg",
+          // name: "",
+          logo: "img/1.png",
           // description: "Strategic Operations Command",
-          // rank: "5-Star General"
+          rank: "Diamond"
         },
         
       ]
     },
     colonel: {
-      title: "COLONEL",
-      description: "Elite Tactical Division",
+      // title: "COLONEL",
+      // description: "Elite Tactical Division",
       icon: Star,
       partners: [
+        // {
+        //   name: "",
+        //   logo: "img/colenal.png",
+        //   // description: "Advanced Combat Solutions",
+        //   // rank: "Colonel"
+        // },
         {
-          name: "Bravo Tactical Systems",
-          logo: "img/colenal.png",
-          // description: "Advanced Combat Solutions",
-          // rank: "Colonel"
-        },
-        {
-          name: "Charlie Defense Corp",
-          logo: "img/colenal.png",
+          // name: "Platinum",
+          logo: "img/2.png",
           // description: "Tactical Defense Unit",
-          // rank: "Lieutenant Colonel"
+          rank: "Platinum"
         }
       ]
     },
     major: {
-      title: "MAJOR",
-      description: "Special Operations Force",
       icon: Medal,
       partners: [
         {
-          name: "Delta Strike Force",
-          logo: "img/star.png",
-          description: "Specialized Operations",
-          rank: "Major"
+          // name: "Gold",
+          logo: "img/3.png",
+          // description: "Specialized Operations",
+          rank: "Gold"
         },
         {
-          name: "Echo Intelligence",
-          logo: "img/star.png",
-          description: "Tactical Intelligence",
-          rank: "Major"
+          // name: "Silver",
+          logo: "img/4.png",
+          // description: "Tactical Intelligence",
+          rank: "Silver"
         },
         {
-          name: "Foxtrot Dynamics",
-          logo: "img/star.png",
-          description: "Combat Systems",
-          rank: "Major"
+          // name: "Bronze",
+          logo: "img/5.png",
+          // description: "Combat Systems",
+          rank: "Bronze"
         }
       ]
     }
@@ -83,7 +81,7 @@ function Partners() {
     <div className="min-h-screen bg-black text-gray-100 relative overflow-hidden">
     <div className="relative flex flex-col items-center container mx-auto px-4 text-[#198f51] mb-10">
           <AnimatedTitle
-            title=" <b>Partners</b>"
+            title=" <b>Sponsors</b>"
             containerClass="mt-8 !text-black text-center reveal-element "
           />
         </div>
@@ -145,7 +143,7 @@ function Partners() {
               <div className={`
                 grid gap-8 justify-items-center
                 ${key === 'general' ? 'grid-cols-1' : 
-                  key === 'colonel' ? 'grid-cols-1 md:grid-cols-2' : 
+                  key === 'colonel' ? 'grid-cols-1 md:grid-cols-1' : 
                   'grid-cols-1 md:grid-cols-3'}
               `}>
                 {tier.partners.map((partner) => (
@@ -154,7 +152,7 @@ function Partners() {
                     className="relative w-full max-w-md group"
                   >
                      
-                    <div className="relative p-6 border border-gray-700 rounded-lg overflow-hidden">
+                    <div className="relative p-6 border border-gray-700 rounded-lg overflow-hidden h-[400px] align-middle flex items-center justify-center">
                       {/* Military Corner Decorations */}
                       <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-500" />
                       <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-500" />
@@ -169,13 +167,13 @@ function Partners() {
                       <img 
                         src={partner.logo} 
                         alt={partner.name}
-                        className="w-full h-49 object-cover mb-6 rounded transition-transform duration-300 group-hover:scale-105"
+                        className="w-full object-cover mb-6 rounded transition-transform duration-300 group-hover:scale-105"
                       />
                       
-                      <div className="text-center">
+                      {/* <div className="text-center">
                         <h3 className="text-xl font-bold mb-2">{partner.name}</h3>
                         <p className="text-gray-400">{partner.description}</p>
-                      </div>
+                      </div> */}
                       
                       {/* Scanning Line Effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
