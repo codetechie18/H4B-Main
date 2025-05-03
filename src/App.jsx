@@ -10,6 +10,7 @@ import  Partners from "./Pages/Partners";
 import Humans from './Pages/Humans';
 import Faqs from './Pages/Faqs';
 import Tracks from './Pages/Tracks';
+import Digitalswag from './Pages/Digitalswag';
 // import Prizes from './pages/Prizes';
 // import Schedule from './pages/Schedule';
 // import Humans from './pages/Humans';
@@ -55,6 +56,9 @@ function App() {
               <Route path="/humans" element={<Humans />} />
               <Route path="/faqs" element={<Faqs />} />
               <Route path="/tracks" element={<Tracks />} />
+
+              {/* added digital-swag path  */}
+              <Route path="/digital-swag" element={<Digitalswag />} />
 
 
               {/* <Route path="/gallery" element={<Gallery />} />
