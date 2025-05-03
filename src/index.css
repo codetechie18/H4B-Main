@@ -4,9 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  width: 100dvw;
+* {
+  -webkit-scrollbar: none; /* Chrome, Safari, and Opera */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  overflow: -moz-scrollbars-none; /* Firefox */
   background-color: #000000;
   font-family: "General Sans", sans-serif;
 }
@@ -314,4 +329,29 @@ body {
 
 .radial-hover-bg:hover {
   background: radial-gradient(circle at center, #000000 0%, #000080 100%);
+}
+
+
+
+@keyframes pulseScaleGreen {
+  0%, 100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+.indicator-line {
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(to top, #22c55e, #16a34a); /* green-500 to green-600 */
+  border-radius: 10px;
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 4px #22c55e66;
+}
+
+.indicator-line.active {
+  animation: pulseScaleGreen 1s infinite ease-in-out;
 }
