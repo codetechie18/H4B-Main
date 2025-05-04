@@ -4,10 +4,10 @@ import AnimatedTitle from '../Components/AnimatedTitle';
 
 const Venue = () => {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
+    <main className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <div className="relative w-full h-[300px] md:h-[400px]">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a] z-10" />
+      <div className="relative w-full h-[300px] md:h-[400px] bg-black">
+        <div className="absolute inset-0 bg-black z-10" />
         <div className="absolute inset-0 bg-[url('/images/camo-pattern.png')] opacity-30 z-0" />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <AnimatedTitle
