@@ -56,8 +56,8 @@ const Sidebar = () => {
     { icon: Users, label: 'Humans', path: '/humans' },
     { icon: Calendar, label: 'Tracks', path: '/tracks' },
     { icon: HelpCircle, label: 'FAQs', path: '/faqs' },
+    { icon: MapPin, label: 'Venue', path: '/venue' },
      // { icon: Phone, label: 'Contact', path: '/contact' },
-    // { icon: MapPin, label: 'Venue', path: '/venue' },
       // { icon: Trophy, label: 'Prize', path: '/prize' },
     // { icon: Calendar, label: 'Schedule', path: '/schedule' },
   ];
