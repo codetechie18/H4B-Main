@@ -53,6 +53,9 @@ export default {
           100: "#F0F2FA",
           200: "#010101",
           300: "#4FB7DD",
+          "hack-blue": "#0ea5e9",
+          "hack-green": "#10b981",
+          "hack-yellow": "#f59e0b",
         },
         violet: {
           300: "#5724ff",
@@ -64,7 +67,9 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animate')
+  ],
 };
 
 
