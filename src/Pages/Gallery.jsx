@@ -113,7 +113,7 @@ export default function Gallery() {
         <CornerBorderWrapper>
           <div className="bg-transparent h-48 sm:h-60">
             <img
-              src="/img/img6.jpg"
+              src="/img/Delhi.jpg"
               alt="Gallery image 6"
               className="w-full h-full object-cover rounded-md"
             />
@@ -226,7 +226,7 @@ export default function Gallery() {
             <CornerBorderWrapper>
               <div className="bg-transparent text-black font-bold text-xl flex justify-center items-center h-full">
                 <img
-                  src="/img/img6.jpg"
+                  src="/img/Delhi.jpg"
                   alt="description"
                   className="w-full h-full object-cover rounded-md"
                 />
