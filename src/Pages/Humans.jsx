@@ -101,7 +101,8 @@ const Organizers = () => {
       name: "Sujal Khade",
       // label: "Tech Head",
       src: "/img/sujal.png",
-      linkedin: "https://www.linkedin.com/in/sujal-khade-2823a32a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin:
+        "https://www.linkedin.com/in/sujal-khade-2823a32a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       twitter: "https://x.com/CodeTechie43?t=mTB5xj5Xm0mxEtD78UeReQ&s=09",
     },
     {
@@ -192,6 +193,13 @@ const Organizers = () => {
       src: "/img/sunidhi.png",
       linkedin: "https://www.linkedin.com/in/sunidhi-haware-797a97323",
       twitter: "https://x.com/Sunidhi_vj",
+    },
+    {
+      name: "Kanak Dharamthok",
+      // label: "Logistics Lead",
+      src: "/img/kanak.png",
+      linkedin: "https://www.linkedin.com/in/kanak-dharamthok-8b6b8928b/",
+      twitter: "https://x.com/KanakDharamthok",
     },
   ];
 
