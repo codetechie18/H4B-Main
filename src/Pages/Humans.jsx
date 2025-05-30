@@ -15,6 +15,7 @@ const springValues = {
   mass: 2,
 };
 
+
 const OrganizerCard = ({ member }) => {
   const ref = useRef(null);
   const rotateX = useSpring(0, springValues);
