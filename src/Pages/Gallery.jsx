@@ -71,8 +71,8 @@ export default function Gallery() {
         <CornerBorderWrapper>
           <div className="bg-transparent h-48 sm:h-60">
             <img
-              src="/img/img3.jpg"
-              alt="Gallery image 3"
+              src="/img/prehack1.jpg"
+              alt="Pre Hackathon image 2"
               className="w-full h-full object-cover rounded-md"
             />
           </div>
@@ -139,8 +139,8 @@ export default function Gallery() {
         <CornerBorderWrapper>
           <div className="bg-transparent h-48 sm:h-60">
             <img
-              src="/img/workshop1.jpg"
-              alt="Gallery workshop image"
+              src="/img/prehack2.jpg"
+              alt="Pre Hackathon image"
               className="w-full h-full object-cover rounded-md"
             />
           </div>
@@ -187,7 +187,7 @@ export default function Gallery() {
             <CornerBorderWrapper>
               <div className="bg-transparent text-black font-bold text-xl flex justify-center items-center h-60">
                 <img
-                  src="/img/img3.jpg"
+                  src="/img/prehack1.jpg"
                   alt="description"
                   className="w-full h-full object-cover rounded-md"
                 />
@@ -252,7 +252,7 @@ export default function Gallery() {
             <CornerBorderWrapper>
               <div className="bg-transparent text-black font-bold text-xl flex justify-center items-center h-60">
                 <img
-                  src="/img/workshop1.jpg"
+                  src="/img/prehack2.jpg"
                   alt="description"
                   className="w-full h-full object-cover rounded-md"
                 />
