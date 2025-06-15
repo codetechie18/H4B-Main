@@ -8,6 +8,7 @@ import {
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import AnimatedTitle from "../Components/AnimatedTitle";
 import Footer from "../Components/Footer";
+import DottedBg from "../Components/DottedBg";
 
 const springValues = {
   damping: 30,
@@ -101,7 +102,8 @@ const Organizers = () => {
       name: "Sujal Khade",
       // label: "Tech Head",
       src: "/img/sujal.png",
-      linkedin: "https://www.linkedin.com/in/sujal-khade-2823a32a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin:
+        "https://www.linkedin.com/in/sujal-khade-2823a32a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       twitter: "https://x.com/CodeTechie43?t=mTB5xj5Xm0mxEtD78UeReQ&s=09",
     },
     {
@@ -196,19 +198,32 @@ const Organizers = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6 flex flex-col items-center">
-      <AnimatedTitle
-        title="<b>Humans</b>"
-        containerClass="mt-8 text-black text-center reveal-element"
-      />
-      <div className="mt-16 py-8 sm:py-12 md:py-16 w-full flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16 max-w-6xl w-full justify-items-center">
-          {organizers.map((member, index) => (
-            <OrganizerCard key={index} member={member} />
-          ))}
+    <div className="relative min-h-screen text-white">
+      {/* Add DottedBg wrapper */}
+      <DottedBg
+        dotColor="rgba(255, 255, 255, 0.25)"
+        bgColor="black"
+        dotSize={2}
+        baseSpacing={30}
+        repelRadius={100}
+        explodeStrength={25}
+        returnSpeed={0.5}
+      >
+        <div className="relative z-10 py-16 px-6 flex flex-col items-center">
+          <AnimatedTitle
+            title="<b>Humans</b>"
+            containerClass="mt-8 text-black text-center reveal-element"
+          />
+          <div className="mt-16 py-8 sm:py-12 md:py-16 w-full flex justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16 max-w-6xl w-full justify-items-center">
+              {organizers.map((member, index) => (
+                <OrganizerCard key={index} member={member} />
+              ))}
+            </div>
+          </div>
+          <Footer />
         </div>
-      </div>
-      <Footer />
+      </DottedBg>
     </div>
   );
 };
