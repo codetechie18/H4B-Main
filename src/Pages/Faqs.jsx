@@ -148,9 +148,7 @@ export default function Faqs() {
             </div>
           </div>
 
-          <div className="relative, h-[600px] py-8 sm:py-12 md:py-16">
-            <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.1} />
-          </div>
+        
           <Footer />
         </div>
       </DottedBg>
