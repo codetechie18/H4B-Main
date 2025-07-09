@@ -211,10 +211,10 @@ const Footer = () => {
             <li>
               📱{" "}
               <a
-                href="tel:+917776955168"
+                href="tel:+917820931587"
                 className="hover:text-emerald-300 transition-colors"
               >
-                +91 7776955168
+                +91 7820931587
               </a>
             </li>
           </ul>
