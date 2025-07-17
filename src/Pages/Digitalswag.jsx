@@ -1203,10 +1203,11 @@ const Digitalswag = () => {
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
         </DottedBg>
       </div>
-      <Footer />
+      
     </>
   );
 };
