@@ -216,9 +216,9 @@ function Partners() {
           </div>
 
           {/* marquee  */}
-          <div>
+          {/* <div>
             <Marquee />
-          </div>
+          </div> */}
 
           <Footer />
         </div>
