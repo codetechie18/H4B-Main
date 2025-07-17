@@ -158,7 +158,7 @@ const Footer = () => {
 
   const documentLinks = [
     {
-      href: "https://drive.google.com/drive/folders/1SdToxbTVp6fibqF-IsLYCUdPZQI_KhLf",
+      href: "https://drive.google.com/file/d/1wyl6-JPD4In_83x03K6vC9fygyn0hXZM/view?usp=sharing",
       icon: <FaFileAlt />,
       label: "Event Brochure",
     },
