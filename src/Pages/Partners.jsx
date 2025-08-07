@@ -174,9 +174,9 @@ function Partners() {
                 }
               `}
                   >
-                    {tier.partners.map((partner) => (
+                    {tier.partners.map((partner, index) => (
                       <div
-                        key={partner.name}
+                        key={partner.logo || partner.rank || index}
                         className="relative w-full max-w-md group"
                       >
                         <div className="relative p-6 border border-gray-700 rounded-lg overflow-hidden h-[400px] align-middle flex items-center justify-center">
@@ -220,8 +220,7 @@ function Partners() {
             <Marquee />
           </div> */}
 
-          <Footer />
-        </div>
+          {/* <Footer /> */}        </div>
       </DottedBg>
     </div>
   );

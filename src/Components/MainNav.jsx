@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { HandCoins  } from 'lucide-react';
+import { HandCoins } from 'lucide-react';
 import {
   Home,
   Image as GalleryIcon,
@@ -18,7 +17,7 @@ import {
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false); // NEW: controls fade-in
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('home');
 
   // Delay the appearance of sidebar
   useEffect(() => {
@@ -45,23 +44,53 @@ const Sidebar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
-  // Close sidebar when route changes (mobile)
+  // Track active section based on scroll position
   useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
+    const handleScroll = () => {
+      const sections = ['home', 'gallery', 'digital-swag', 'partners', 'humans', 'tracks', 'faqs'];
+      let current = 'home';
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = section;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsOpen(false); // Close mobile menu after navigation
+  };
 
   const menuItems = [
-    { icon: Home, label: 'Home', path: '/' },
-    { icon: GalleryIcon, label: 'Gallery', path: '/gallery' },
-    { icon: Camera, label: 'Digital Swag', path: '/digital-swag' },
-    { icon: HandCoins , label: 'Sponsors', path: '/partners' },
-    { icon: Users, label: 'Humans', path: '/humans' },
-    { icon: Calendar, label: 'Tracks', path: '/tracks' },
-    { icon: HelpCircle, label: 'FAQs', path: '/faqs' },
-    // { icon: MapPin, label: 'Venue', path: '/venue' },
-     // { icon: Phone, label: 'Contact', path: '/contact' },
-      // { icon: Trophy, label: 'Prize', path: '/prize' },
-    // { icon: Calendar, label: 'Schedule', path: '/schedule' },
+    { icon: Home, label: 'Home', section: 'home' },
+    { icon: GalleryIcon, label: 'Gallery', section: 'gallery' },
+    { icon: Camera, label: 'Digital Swag', section: 'digital-swag' },
+    { icon: HandCoins, label: 'Sponsors', section: 'partners' },
+    { icon: Users, label: 'Humans', section: 'humans' },
+    { icon: Calendar, label: 'Tracks', section: 'tracks' },
+    { icon: HelpCircle, label: 'FAQs', section: 'faqs' },
+    // { icon: MapPin, label: 'Venue', section: 'venue' },
+    // { icon: Phone, label: 'Contact', section: 'contact' },
+    // { icon: Trophy, label: 'Prize', section: 'prize' },
+    // { icon: Calendar, label: 'Schedule', section: 'schedule' },
   ];
 
   return (
