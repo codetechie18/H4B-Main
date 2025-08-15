@@ -125,11 +125,11 @@ const Sidebar = () => {
       >
         <div className="flex flex-col gap-4 my-2 hover:items-start pl-2 text-white">
           {menuItems.map((item) => {
-            const isActive = location.pathname === item.path;
+            const isActive = activeSection === item.section;
             return (
-              <Link
-                key={item.path}
-                to={item.path}
+              <button
+                key={item.section}
+                onClick={() => scrollToSection(item.section)}
                 className={`flex items-center space-x-4 text-sm p-2 w-12 group-hover:w-44 rounded-full h-12 transition-all duration-300 ease-in-out
                   ${isActive 
                     ? 'text-white bg-green-700 shadow-lg backdrop-blur-lg pl-3 scale-105' 
@@ -138,7 +138,7 @@ const Sidebar = () => {
               >
                 <item.icon className="w-6 h-6" />
                 <span className="hidden group-hover:inline whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">{item.label}</span>
-              </Link>
+              </button>
             );
           })}
         </div>
