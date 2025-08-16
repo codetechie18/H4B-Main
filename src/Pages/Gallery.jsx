@@ -183,7 +183,7 @@ export default function Gallery() {
                 <CornerBorderWrapper>
                   <img src="/img/game1.jpg" alt="Gallery game image" className="w-full object-cover rounded-md h-60" />
                 </CornerBorderWrapper>
-              </div>
+              </div>  
 
               {/* bottom‑right workshop */}
               <div className="md:col-span-5 md:row-span-2 md:col-start-7 md:row-start-5">
@@ -220,8 +220,7 @@ export default function Gallery() {
             </div>
           </div>
 
-          <Footer />
-        </div>
+          {/* <Footer /> */}        </div>
       </DottedBg>
     </div>
   );

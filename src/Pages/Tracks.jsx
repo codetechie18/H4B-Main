@@ -465,8 +465,7 @@ const TracksSlider = () => {
           <div className="h-px w-12 md:w-16 bg-gray-800"></div>
         </div>
       </div> */}
-          <Footer />
-        </div>
+          {/* <Footer /> */}        </div>
       </DottedBg>
     </div>
   );
