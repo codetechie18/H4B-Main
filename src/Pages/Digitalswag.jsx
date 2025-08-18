@@ -1,13 +1,17 @@
-
-// ADJUSTED 
-
-
 import { useState, useRef, useEffect } from "react"
+import { motion } from "framer-motion"
+import AnimatedTitle from "../Components/AnimatedTitle"
 const template = "/img/final_frame.png"
 const defaultAvatar = "/img/final_defaultIMG.jpg"
-import AnimatedTitle from "../Components/AnimatedTitle"
-import { motion } from "framer-motion"
-import Footer from "../Components/Footer"
+
+// AnimatedTitle component inline to avoid GSAP issues
+// const AnimatedTitle = ({ title, className, containerClass }) => {
+//   return (
+//     <div className={containerClass}>
+//       <h1 className={className} dangerouslySetInnerHTML={{ __html: title }} />
+//     </div>
+//   )
+// }
 
 const Digitalswag = () => {
   const [image, setImage] = useState(null)
@@ -20,6 +24,7 @@ const Digitalswag = () => {
   })
   const [showAdjustments, setShowAdjustments] = useState(false)
   const [templateLoaded, setTemplateLoaded] = useState(false)
+  const [defaultAvatarLoaded, setDefaultAvatarLoaded] = useState(false)
 
   const canvasRef = useRef(null)
   const imageInputRef = useRef(null)
@@ -27,32 +32,45 @@ const Digitalswag = () => {
   const templateImgRef = useRef(null)
   const uploadedImgRef = useRef(null)
 
+  // Load default avatar with proper error handling
   useEffect(() => {
-    drawSwag()
-  }, [name, image, imageAdjustments, templateLoaded])
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-    const defaultAvatarImg = defaultAvatarRef.current
-
+    const defaultAvatarImg = new Image()
     defaultAvatarImg.onload = () => {
-      ctx.drawImage(defaultAvatarImg, 0, 0, canvas.width, canvas.height)
+      defaultAvatarRef.current = defaultAvatarImg
+      setDefaultAvatarLoaded(true)
     }
+    defaultAvatarImg.onerror = () => {
+      console.warn("Default avatar failed to load")
+      setDefaultAvatarLoaded(true) // Still set to true to prevent infinite loading
+    }
+    defaultAvatarImg.src = defaultAvatar
   }, [])
 
-  // Preload template once to avoid reloading on every keystroke (prevents flicker)
+  // Preload template with proper error handling
   useEffect(() => {
     const img = new Image()
     img.onload = () => {
       templateImgRef.current = img
       setTemplateLoaded(true)
     }
+    img.onerror = () => {
+      console.warn("Template image failed to load")
+      setTemplateLoaded(true) // Still set to true to prevent infinite loading
+    }
     img.src = template
   }, [])
 
+  // Draw canvas only when assets are loaded
+  useEffect(() => {
+    if (defaultAvatarLoaded && templateLoaded) {
+      drawSwag()
+    }
+  }, [name, image, imageAdjustments, templateLoaded, defaultAvatarLoaded])
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0]
+    if (!file) return
+
     const reader = new FileReader()
 
     reader.onload = () => {
@@ -65,16 +83,25 @@ const Digitalswag = () => {
           height: img.height,
         })
       }
+      img.onerror = () => {
+        console.error("Failed to load uploaded image")
+        alert("Failed to load the uploaded image. Please try again with a different image.")
+      }
       img.src = reader.result
     }
 
-    if (file) {
-      reader.readAsDataURL(file)
+    reader.onerror = () => {
+      console.error("Failed to read file")
+      alert("Failed to read the file. Please try again.")
     }
+
+    reader.readAsDataURL(file)
   }
 
   const handleDownloadSwag = () => {
     const canvas = canvasRef.current
+    if (!canvas) return
+
     const tempCanvas = document.createElement("canvas")
     const tempCtx = tempCanvas.getContext("2d")
     const scaleFactor = 2
@@ -93,71 +120,77 @@ const Digitalswag = () => {
 
   const drawSwag = () => {
     const canvas = canvasRef.current
+    if (!canvas) return
+
     const ctx = canvas.getContext("2d")
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    if (image && uploadedImgRef.current) {
-      // Save the current context state
-      ctx.save()
+    try {
+      if (image && uploadedImgRef.current && uploadedImgRef.current.complete) {
+        // Save the current context state
+        ctx.save()
 
-      // Apply transformations
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
+        // Apply transformations
+        const centerX = canvas.width / 2
+        const centerY = canvas.height / 2
 
-      // Move to center, apply rotation, then move back
-      ctx.translate(centerX + imageAdjustments.offsetX, centerY + imageAdjustments.offsetY)
-      ctx.rotate((imageAdjustments.rotation * Math.PI) / 180)
-      ctx.scale(imageAdjustments.scale, imageAdjustments.scale)
+        // Move to center, apply rotation, then move back
+        ctx.translate(centerX + imageAdjustments.offsetX, centerY + imageAdjustments.offsetY)
+        ctx.rotate((imageAdjustments.rotation * Math.PI) / 180)
+        ctx.scale(imageAdjustments.scale, imageAdjustments.scale)
 
-      // Calculate image dimensions and position
-      let sx, sy, sWidth, sHeight
-      const aspectRatioCanvas = canvas.width / canvas.height
-      const aspectRatioImage = uploadedImgRef.current.width / uploadedImgRef.current.height
+        // Calculate image dimensions and position
+        let sx, sy, sWidth, sHeight
+        const aspectRatioCanvas = canvas.width / canvas.height
+        const aspectRatioImage = uploadedImgRef.current.width / uploadedImgRef.current.height
 
-      if (aspectRatioImage > aspectRatioCanvas) {
-        sWidth = uploadedImgRef.current.height * aspectRatioCanvas
-        sHeight = uploadedImgRef.current.height
-        sx = (uploadedImgRef.current.width - sWidth) / 2
-        sy = 0
-      } else {
-        sWidth = uploadedImgRef.current.width
-        sHeight = uploadedImgRef.current.width / aspectRatioCanvas
-        sx = 0
-        sy = (uploadedImgRef.current.height - sHeight) / 2
+        if (aspectRatioImage > aspectRatioCanvas) {
+          sWidth = uploadedImgRef.current.height * aspectRatioCanvas
+          sHeight = uploadedImgRef.current.height
+          sx = (uploadedImgRef.current.width - sWidth) / 2
+          sy = 0
+        } else {
+          sWidth = uploadedImgRef.current.width
+          sHeight = uploadedImgRef.current.width / aspectRatioCanvas
+          sx = 0
+          sy = (uploadedImgRef.current.height - sHeight) / 2
+        }
+
+        // Draw the image centered at the origin (which is now at the transformed center)
+        ctx.drawImage(
+          uploadedImgRef.current,
+          sx,
+          sy,
+          sWidth,
+          sHeight,
+          -canvas.width / 2,
+          -canvas.height / 2,
+          canvas.width,
+          canvas.height,
+        )
+
+        // Restore the context state
+        ctx.restore()
+      } else if (defaultAvatarRef.current && defaultAvatarRef.current.complete) {
+        // Draw default avatar only if it's loaded and complete
+        ctx.drawImage(defaultAvatarRef.current, 0, 0, canvas.width, canvas.height)
       }
 
-      // Draw the image centered at the origin (which is now at the transformed center)
-      ctx.drawImage(
-        uploadedImgRef.current,
-        sx,
-        sy,
-        sWidth,
-        sHeight,
-        -canvas.width / 2,
-        -canvas.height / 2,
-        canvas.width,
-        canvas.height,
-      )
+      // Draw template if preloaded and complete
+      if (templateImgRef.current && templateImgRef.current.complete) {
+        ctx.drawImage(templateImgRef.current, 0, 0, canvas.width, canvas.height)
+      }
 
-      // Restore the context state
-      ctx.restore()
-    } else {
-      const defaultAvatarImg = defaultAvatarRef.current
-      ctx.drawImage(defaultAvatarImg, 0, 0, canvas.width, canvas.height)
+      // Draw text overlay
+      const fontSize = canvas.width * 0.045
+      ctx.font = `bold ${fontSize}px serif`
+      ctx.fillStyle = "#4a2419"
+      ctx.textAlign = "center"
+      const textY = canvas.height - canvas.height * 0.2
+      ctx.fillText((name && "•↣ " + name + " ↢•") || "•↣ " + "Your Name Here" + " ↢•", canvas.width / 2, textY)
+    } catch (error) {
+      console.error("Error drawing canvas:", error)
     }
-
-    // Draw template if preloaded
-    if (templateImgRef.current) {
-      ctx.drawImage(templateImgRef.current, 0, 0, canvas.width, canvas.height)
-    }
-
-    // Draw text overlay
-    const fontSize = canvas.width * 0.045
-    ctx.font = `bold ${fontSize}px serif`
-    ctx.fillStyle = "#4a2419"
-    ctx.textAlign = "center"
-    const textY = canvas.height - canvas.height * 0.2
-    ctx.fillText((name && "•↣ " + name + " ↢•") || "•↣ " + "Your Name Here" + " ↢•", canvas.width / 2, textY)
   }
 
   const itemVariants = {
@@ -199,14 +232,7 @@ const Digitalswag = () => {
 
   return (
     <>
-      <div className="min-h-screen  text-white relative overflow-hidden">
-        {/* Animated background elements */}
-        {/* <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#198f51] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#198f51] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#198f51] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-500"></div>
-        </div> */}
-
+      <div className="min-h-screen text-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-8 md:py-12 relative z-10">
           {/* Enhanced Title Section */}
           <motion.div
@@ -222,7 +248,6 @@ const Digitalswag = () => {
                 containerClass="text-center bg-gradient-to-r from-[#198f51] to-emerald-400 bg-clip-text text-transparent"
               />
             </motion.div>
-            
           </motion.div>
 
           <div className="flex flex-col xl:flex-row justify-center items-start gap-8 xl:gap-16 max-w-7xl mx-auto">
@@ -234,10 +259,6 @@ const Digitalswag = () => {
               className="w-full xl:w-1/2 flex justify-center"
             >
               <div className="relative group">
-                {/* Glowing border effect */}
-                {/* <div className="absolute -inset-1 bg-gra
-                dient-to-r from-[#198f51] to-emerald-400 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div> */}
-
                 <div className="relative bg-black rounded-xl p-6 border border-gray-800">
                   <canvas
                     ref={canvasRef}
@@ -252,13 +273,6 @@ const Digitalswag = () => {
                   </div>
                 </div>
               </div>
-
-              <img
-                ref={defaultAvatarRef}
-                src={defaultAvatar || "/placeholder.svg"}
-                alt="Default Avatar"
-                style={{ display: "none" }}
-              />
             </motion.div>
 
             {/* Controls Section - Enhanced */}
@@ -430,7 +444,7 @@ const Digitalswag = () => {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => imageInputRef.current.click()}
+                      onClick={() => imageInputRef.current?.click()}
                       className="cursor-pointer"
                     >
                       <div className="bg-gradient-to-r from-[#198f51] to-emerald-500 hover:from-emerald-500 hover:to-[#198f51] text-black font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 shadow-lg hover:shadow-[#198f51]/25">
@@ -486,7 +500,7 @@ const Digitalswag = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
@@ -512,16 +526,3 @@ const Digitalswag = () => {
 }
 
 export default Digitalswag
-
-
-
-
-
-
-
-
-
-
-
-
-

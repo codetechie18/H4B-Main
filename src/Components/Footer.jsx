@@ -330,8 +330,8 @@ const Footer = () => {
     },
     {
       icon: <Phone size={18} />,
-      label: "+91 7776955168",
-      href: "tel:+917776955168",
+      label: "+91 7820931587",
+      href: "tel:+917820931587",
     },
   ]
 
@@ -359,10 +359,10 @@ const Footer = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-[#06AD63] to-transparent rounded-full"></div>
             </div>
 
-            <p className="text-gray-300 text-lg leading-relaxed max-w-md">
+            {/* <p className="text-gray-300 text-lg leading-relaxed max-w-md">
               A hackathon dedicated to honoring and supporting our brave soldiers through innovative technological
               solutions.
-            </p>
+            </p> */}
 
             {/* Mission Statement */}
             <div className="bg-gradient-to-r from-[#06AD63]/10 to-transparent p-6 rounded-2xl border border-[#06AD63]/20">
@@ -425,7 +425,7 @@ const Footer = () => {
             </div>
 
             {/* Documents */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <h4 className="text-lg font-semibold text-[#06AD63] flex items-center gap-2">
                 <FileText size={20} />
                 Documents
@@ -451,7 +451,7 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
