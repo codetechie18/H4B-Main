@@ -11,6 +11,8 @@ import Faqs from './Pages/Faqs';
 import Tracks from './Pages/Tracks';
 import Digitalswag from './Pages/Digitalswag';
 import Venue from './Pages/Venue';
+import About from './Pages/About';
+import Footer from './Components/Footer';
 
 function App() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -42,43 +44,53 @@ function App() {
         >
           <div className="relative z-10 w-full min-h-screen">
             {/* Hero Section */}
-            <section id="home" className="min-h-screen">
+            <section id="home" >
               <Hero />
             </section>
 
+            {/* About Section */}
+            <section id="about" className="">
+              <About />
+            </section>
+
             {/* Gallery Section */}
-            <section id="gallery" className="min-h-screen">
+            <section id="gallery" >
               <Gallery />
             </section>
 
             {/* Digital Swag Section */}
-            <section id="digital-swag" className="min-h-screen">
+            <section id="digital-swag" >
               <Digitalswag />
             </section>
 
             {/* Partners Section */}
-            <section id="partners" className="min-h-screen">
+            <section id="partners" >
               <Partners />
             </section>
 
             {/* Humans Section */}
-            <section id="humans" className="min-h-screen">
+            <section id="humans" >
               <Humans />
             </section>
 
             {/* Tracks Section */}
-            <section id="tracks" className="min-h-screen py-8">
+            <section id="tracks" >
               <Tracks />
             </section>
 
             {/* Venue Section */}
-            <section id="venue" className="min-h-screen">
+            <section id="venue" >
               <Venue />
             </section>
 
             {/* FAQs Section */}
-            <section id="faqs" className="min-h-screen">
+            <section id="faqs">
               <Faqs />
+            </section>
+
+            {/* Footer Section */}
+            <section id="footer">
+              <Footer />
             </section>
           </div>
         </DottedBg>
