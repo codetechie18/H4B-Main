@@ -48,10 +48,10 @@ const Footer = () => {
         {/* Branding */}
         <div>
           <h3 className="text-2xl md:text-4xl font-medium text-white mb-4 mt-2">Hack<span className="font-semibold text-[#06AD63] text-[5rem]">4</span>Brahma</h3>
-          <p className="text-green-100 leading-relaxed">
+          {/* <p className="text-green-100 leading-relaxed">
             A hackathon dedicated to honoring and supporting our brave soldiers
             through innovative technological solutions.
-          </p>
+          </p> */}
         </div>
 
         {/* Social Media */}
@@ -97,7 +97,7 @@ const Footer = () => {
             </li>
           </ul>
 
-          <h4 className="text-lg text-emerald-300 font-semibold mb-2">Important Documents</h4>
+          {/* <h4 className="text-lg text-emerald-300 font-semibold mb-2">Important Documents</h4>
           <ul className="space-y-2">
             {documentLinks.map((link, index) => (
               <li key={index}>
@@ -116,7 +116,7 @@ const Footer = () => {
                 </a>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </div>
 

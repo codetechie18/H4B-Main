@@ -70,13 +70,13 @@ const TrackCard = ({ track, isFocused }) => {
 const TracksSlider = () => {
   // Track data with army-themed titles
   const tracks = [
-    {
-      id: 1,
-      title: "Healthcare",
-      description:
-        "Bring your unique ideas and innovative solutions to address any challenge.",
-      image: "/img/HC.png",
-    },
+    // {
+    //   id: 1,
+    //   title: "Healthcare",
+    //   description:
+    //     "Bring your unique ideas and innovative solutions to address any challenge.",
+    //   image: "/img/HC.png",
+    // },
     {
       id: 2,
       title: "Cyber Security",
@@ -89,7 +89,7 @@ const TracksSlider = () => {
       title: "Education",
       description:
         "Create technology to enhance tactical awareness and mission effectiveness.",
-      image: "/img/EDU.png",
+      image: "/img/AR.png",
     },
     {
       id: 4,
@@ -100,10 +100,10 @@ const TracksSlider = () => {
     },
     {
       id: 5,
-      title: "Data Science",
+      title: "Open innovative",
       description:
-        "Design solutions for supply chain optimization and resource management.",
-      image: "/img/DS.png",
+        "Foster a culture of open innovation and collaboration.",
+      image: "/img/oi.png",
     },
     {
       id: 6,
@@ -113,18 +113,11 @@ const TracksSlider = () => {
       image: "/img/IOT.png",
     },
     {
-      id: 7,
-      title: "Machanical Learning",
-      description:
-        "Develop secure and reliable communication systems for challenging environments.",
-      image: "/img/ML.png",
-    },
-    {
       id: 8,
-      title: "AUTONOMOUS SYSTEMS",
+      title: "GAme Development",
       description:
         "Create intelligent autonomous solutions for various mission applications.",
-      image: "/img/WEB.png",
+      image: "/img/GD.png",
     },
   ];
 
@@ -276,7 +269,7 @@ const TracksSlider = () => {
   return (
     <div className="relative min-h-screen text-gray-200 overflow-hidden">
       {/* Add DottedBg wrapper */}
-      <DottedBg
+      {/* <DottedBg
         dotColor="rgba(255, 255, 255, 0.25)"
         bgColor="black"
         dotSize={2}
@@ -284,8 +277,8 @@ const TracksSlider = () => {
         repelRadius={100}
         explodeStrength={25}
         returnSpeed={0.5}
-      >
-        <div className="relative z-10 py-12 px-4">
+      > */}
+        <div className="relative z-10">
           {/* Military-style header */}
           <div className="container mx-auto mb-12">
             <div className="flex flex-col items-center">
@@ -456,17 +449,8 @@ const TracksSlider = () => {
               {tracks[currentIndex].title}
             </p>
           </div>
-
-          {/* Military-style footer */}
-          {/* <div className="container mx-auto mt-12 md:mt-16">
-        <div className="flex justify-center items-center">
-          <div className="h-px w-12 md:w-16 bg-gray-800"></div>
-          <div className="mx-4 text-green-500 text-xs font-mono uppercase tracking-widest">Secure Connection</div>
-          <div className="h-px w-12 md:w-16 bg-gray-800"></div>
         </div>
-      </div> */}
-          {/* <Footer /> */}        </div>
-      </DottedBg>
+     
     </div>
   );
 };

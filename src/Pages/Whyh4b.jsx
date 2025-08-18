@@ -320,7 +320,7 @@ const Whyh4b = () => {
         explodeStrength={25}
         returnSpeed={0.5}
       >
-        <div className="relative z-10 py-16 px-6 flex flex-col items-center">
+        <div className="relative z-10 px-4 sm:px-6 md:pl-20">
           <div className="container py-8 sm:py-12 md:py-16">
             <motion.div
               initial="hidden"
@@ -334,14 +334,14 @@ const Whyh4b = () => {
                   containerClass="mt-4 sm:mt-8 !text-black text-center reveal-element"
                 />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-6xl mx-auto font-robert-regular px-2">
-                <div className="text-3xl sm:text-2xl text-white/70 max-w-3xl mx-auto font-robert-regular mb-3 sm:mb-4 text-reveal">
+              <p className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-6xl mx-auto font-robert-regular px-2">
+                <p className="text-3xl sm:text-2xl text-white/70 max-w-3xl mx-auto font-robert-regular mb-3 sm:mb-4 text-reveal">
                   <b>
                     Hack4Brahma: Northeast India's Ultimate Code Battleground
                   </b>
                   <br />
                   <b>संयोजय I नवसृज I विजयी भव</b>
-                </div>
+                </p>
                 <p>
                   More than just a hackathon, Hack4Brahma is a mission-driven
                   movement set in one of India's most culturally rich and
@@ -354,7 +354,7 @@ const Whyh4b = () => {
                   mentors. Become a Brahma Guardian — someone who codes for
                   change, not just recognition.
                 </p>
-              </div>
+              </p>
             </motion.div>
 
             {/* Commented sections preserved exactly as in original */}
