@@ -147,9 +147,7 @@ export default function Faqs() {
               ))}
             </div>
           </div>
-
-        
-          <Footer />
+          <Footer />{" "}
         </div>
       </DottedBg>
     </div>

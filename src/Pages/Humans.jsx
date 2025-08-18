@@ -192,8 +192,7 @@ const Organizers = () => {
               ))}
             </div>
           </div>
-          <Footer />
-        </div>
+          {/* <Footer /> */}        </div>
       </DottedBg>
     </div>
   );
