@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ManinNav from './Components/MainNav';
+import DottedBg from './Components/DottedBg';
 
 // Import your page components
 import Hero from './Pages/Hero';
@@ -9,6 +10,7 @@ import Humans from './Pages/Humans';
 import Faqs from './Pages/Faqs';
 import Tracks from './Pages/Tracks';
 import Digitalswag from './Pages/Digitalswag';
+import Venue from './Pages/Venue';
 
 function App() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -28,43 +30,58 @@ function App() {
           w-full relative overflow-x-hidden
         `}
       >
-        {/* Content wrapper */}
-        <div className="relative z-10 w-full min-h-screen">
-          {/* Hero Section */}
-          <section id="home" className="min-h-screen">
-            <Hero />
-          </section>
+        {/* Content wrapper with DottedBg covering entire page */}
+        <DottedBg
+          dotColor="rgba(255, 255, 255, 0.25)"
+          bgColor="black"
+          dotSize={2}
+          baseSpacing={30}
+          repelRadius={100}
+          explodeStrength={25}
+          returnSpeed={0.5}
+        >
+          <div className="relative z-10 w-full min-h-screen">
+            {/* Hero Section */}
+            <section id="home" className="min-h-screen">
+              <Hero />
+            </section>
 
-          {/* Gallery Section */}
-          <section id="gallery" className="min-h-screen">
-            <Gallery />
-          </section>
+            {/* Gallery Section */}
+            <section id="gallery" className="min-h-screen">
+              <Gallery />
+            </section>
 
-          {/* Digital Swag Section */}
-          <section id="digital-swag" className="min-h-screen">
-            <Digitalswag />
-          </section>
+            {/* Digital Swag Section */}
+            <section id="digital-swag" className="min-h-screen">
+              <Digitalswag />
+            </section>
 
-          {/* Partners Section */}
-          <section id="partners" className="min-h-screen">
-            <Partners />
-          </section>
+            {/* Partners Section */}
+            <section id="partners" className="min-h-screen">
+              <Partners />
+            </section>
 
-          {/* Humans Section */}
-          <section id="humans" className="min-h-screen">
-            <Humans />
-          </section>
+            {/* Humans Section */}
+            <section id="humans" className="min-h-screen">
+              <Humans />
+            </section>
 
-          {/* Tracks Section */}
-          <section id="tracks" className="min-h-screen">
-            <Tracks />
-          </section>
+            {/* Tracks Section */}
+            <section id="tracks" className="min-h-screen py-8">
+              <Tracks />
+            </section>
 
-          {/* FAQs Section */}
-          <section id="faqs" className="min-h-screen">
-            <Faqs />
-          </section>
-        </div>
+            {/* Venue Section */}
+            <section id="venue" className="min-h-screen">
+              <Venue />
+            </section>
+
+            {/* FAQs Section */}
+            <section id="faqs" className="min-h-screen">
+              <Faqs />
+            </section>
+          </div>
+        </DottedBg>
       </main>
     </div>
   );

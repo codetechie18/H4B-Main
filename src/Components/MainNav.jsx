@@ -47,7 +47,7 @@ const Sidebar = () => {
   // Track active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'gallery', 'digital-swag', 'partners', 'humans', 'tracks', 'faqs'];
+      const sections = ['home', 'gallery', 'digital-swag', 'partners', 'humans', 'tracks', 'venue', 'faqs'];
       let current = 'home';
       
       for (const section of sections) {
@@ -86,8 +86,8 @@ const Sidebar = () => {
     { icon: HandCoins, label: 'Sponsors', section: 'partners' },
     { icon: Users, label: 'Humans', section: 'humans' },
     { icon: Calendar, label: 'Tracks', section: 'tracks' },
+    { icon: MapPin, label: 'Venue', section: 'venue' },
     { icon: HelpCircle, label: 'FAQs', section: 'faqs' },
-    // { icon: MapPin, label: 'Venue', section: 'venue' },
     // { icon: Phone, label: 'Contact', section: 'contact' },
     // { icon: Trophy, label: 'Prize', section: 'prize' },
     // { icon: Calendar, label: 'Schedule', section: 'schedule' },
