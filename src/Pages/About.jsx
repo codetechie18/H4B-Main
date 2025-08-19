@@ -108,25 +108,15 @@ const About = () => {
   );
 
   return (
-    <div className="relative w-full min-h-screen">
-      {/* Add DottedBg wrapper here */}
-      {/* <DottedBg
-        dotColor="rgba(255, 255, 255, 0.25)"
-        bgColor="black"
-        dotSize={2}
-        baseSpacing={30}
-        repelRadius={100}
-        explodeStrength={25}
-        returnSpeed={0.5}
-      > */}
+    <div className="relative w-full">
+     
       <div
         ref={sectionRef}
         id="about"
-        className="relative z-10 w-full min-h-screen
-          bg-fixed bg-cover bg-center sm:py-16 px-4 sm:pl-20
+        className="relative w-full sm:py-16 px-4 sm:pl-20
           will-change-transform"
       >
-        <div className="relative w-full max-w-7xl mx-auto overflow-hidden">
+        <div className="relative w-full max-w-7xl overflow-hidden">
           <div className="relative flex flex-col items-center mx-auto text-[#198f51] sm:mb-10">
             <AnimatedTitle
               title="<b>About</b> <b>us</b> "
@@ -148,7 +138,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      {/* </DottedBg> */}
     </div>
   );
 };
