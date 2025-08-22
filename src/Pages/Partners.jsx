@@ -21,8 +21,8 @@ function Partners() {
       icon: Shield,
       partners: [
         {
-          name: "Diamond Corp",
-          logo: "img/1.png",
+          name: "Orkes",
+          logo: "img/Orkes.png",
           rank: "Diamond",
         },
       ],
@@ -33,8 +33,8 @@ function Partners() {
       icon: Star,
       partners: [
         {
-          name: "Platinum Inc",
-          logo: "img/2.png",
+          name: "Pathway Framework",
+          logo: "img/pathway.png",
           rank: "Platinum",
         },
       ],
@@ -80,6 +80,19 @@ function Partners() {
       ],
     },
   };
+
+  // Additional horizontal row (below Gold/Silver/Bronze) -
+  // included other sponsor logos 
+  const extraPartnersRow = [
+    // { name: "Pathway Framework", logo: "img/pathway.png", rank: "Partner" },
+    { name: "g30", logo: "img/g30.png", rank: "Partner" },
+    { name: "GitHub", logo: "img/GitHub.png", rank: "Gold" },
+    { name: "Give-my-Certificate", logo: "img/GMC LogoS.png", rank: "Partner" },
+    { name: "WIP", logo: "img/WIP-logo .png", rank: "Partner" },
+    { name: "g29", logo: "img/g29.png", rank: "Partner" },
+
+    
+  ];
 
   // Cycle only military partners, not media
   useEffect(() => {
@@ -194,6 +207,41 @@ function Partners() {
                       </div>
                     ))}
                   </div>
+
+                  {/* If this is the 'major' tier, render an extra horizontal row below (same styling/size) */}
+                  {key === "major" && (
+                    <div className="mt-8">
+                      <div className="grid gap-8 justify-items-center grid-cols-1 md:grid-cols-3">
+                        {extraPartnersRow.map((p, i) => (
+                          <div
+                            key={p.name || p.logo || i}
+                            className="relative w-full max-w-md group"
+                          >
+                            <div className="relative p-6 border border-gray-700 rounded-lg overflow-hidden h-[400px] align-middle flex items-center justify-center">
+                              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-green-500" />
+                              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-green-500" />
+                              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-green-500" />
+                              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-green-500" />
+
+                              {/* Rank Badge */}
+                              <div className="absolute top-4 right-4 px-3 py-1 bg-green-900/80 rounded-full border border-green-500/50 text-xs font-mono">
+                                {p.rank}
+                              </div>
+
+                              <img
+                                src={p.logo}
+                                alt={p.name}
+                                className="w-full object-cover mb-6 rounded transition-transform duration-300 group-hover:scale-105"
+                              />
+
+                              {/* Scanning Line Effect */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
