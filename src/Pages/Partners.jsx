@@ -21,8 +21,8 @@ function Partners() {
       icon: Shield,
       partners: [
         {
-          name: "Diamond Corp",
-          logo: "img/1.png",
+          name: "Orkes",
+          logo: "img/Orkes.png",
           rank: "Diamond",
         },
       ],
