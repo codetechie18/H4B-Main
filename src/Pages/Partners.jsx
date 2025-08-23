@@ -46,17 +46,17 @@ function Partners() {
       partners: [
         {
           name: "Gold Systems",
-          logo: "/img/3.png",
+          logo: "/img/GitHub.png",
           rank: "Gold",
         },
         {
           name: "Silver Solutions",
-          logo: "/img/4.png",
+          logo: "/img/3.png",
           rank: "Silver",
         },
         {
           name: "Bronze Brigade",
-          logo: "/img/5.png",
+          logo: "/img/4.png",
           rank: "Bronze",
         },
       ],
@@ -86,7 +86,7 @@ function Partners() {
       description: "Supporting our mission in-kind",
       icon: Camera, // reuse Camera icon for visual parity
       partners: [
-        { name: "InterviewBuddy", logo: "/img/g30.png", rank: "InKind" },
+        { name: "InterviewBuddy", logo: "/img/g29.png", rank: "InKind" },
         { name: "interview-cake", logo: "/img/interview-cake.png", rank: "InKind" },
         { name: "GiveMyCertificate", logo: "/img/GMC LogoS.png", rank: "InKind" },
         { name: "wolfram", logo: "/img/wolfram.png", rank: "InKind" },
@@ -94,13 +94,12 @@ function Partners() {
       ],
     },
 
-    // Ecosystem row (2 logos) 
+    // Ecosystem row (now same size 320 and centered) 
     ecosystem: {
       title: "Ecosystem",
       description: "Ecosystem Partners",
       icon: Shield,
       partners: [
-        { name: "Ethindia", logo: "/img/ethindia.png", rank: "Ecosystem" },
         { name: "WIP", logo: "/img/WIP-logo .png", rank: "Ecosystem" },
       ],
     },
@@ -134,8 +133,8 @@ function Partners() {
         // in-kind compact boxes 
         return "w-full max-w-[320px] h-[320px]";
       case "ecosystem":
-        // ecosystem small wide cards (keep a slightly smaller height)
-        return "w-full max-w-[320px] h-[260px]";
+        // ecosystem now same size as others 
+        return "w-full max-w-[320px] h-[320px]";
       default:
         return "w-full max-w-[320px] h-[320px]";
     }
@@ -146,7 +145,7 @@ function Partners() {
     if (key === "major") return "grid-cols-1 md:grid-cols-3";
     if (key === "media") return count <= 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3";
     if (key === "inkind") return ""; 
-    if (key === "ecosystem") return "grid-cols-1 md:grid-cols-2";
+    if (key === "ecosystem") return "grid-cols-1 justify-center"; // center single ecosystem logo
     if (key === "colonel" || key === "general") return "grid-cols-1";
     return "grid-cols-1 md:grid-cols-3";
   };
