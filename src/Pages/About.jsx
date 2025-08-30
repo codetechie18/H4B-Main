@@ -108,15 +108,13 @@ const About = () => {
   );
 
   return (
-    <div className="relative w-full">
-     
+    <div className="relative w-full flex flex-col items-center justify-center">
       <div
         ref={sectionRef}
         id="about"
-        className="relative w-full sm:py-16 px-4 sm:pl-20
-          will-change-transform"
+        className="relative w-full sm:py-16 px-4 sm:pl-20 flex flex-col items-center justify-center will-change-transform"
       >
-        <div className="relative w-full max-w-7xl overflow-hidden">
+        <div className="relative w-full max-w-7xl overflow-hidden flex flex-col items-center justify-center">
           <div className="relative flex flex-col items-center mx-auto text-[#198f51] sm:mb-10">
             <AnimatedTitle
               title="<b>About</b> <b>us</b> "
@@ -124,8 +122,8 @@ const About = () => {
             />
           </div>
 
-          <div className=" mx-auto text-center px-4 text-white/70 text-2xl mb-24">
-            <p>
+          <div className="mx-auto text-center px-4 text-white/70 text-2xl mb-24 flex flex-col items-center justify-center">
+            <p className="text-center">
               Hack4Brahma is Northeast India’s biggest hackathon, supported by
               Startup India and SAYUJ, powered by Orkes, hosted at IIIT Guwahati
               on 11th–12th October 2025. Students will collaborate, build
